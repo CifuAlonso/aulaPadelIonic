@@ -1,0 +1,45 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="!actualizaFalta">Nueva ausencia</ion-title>
+    <ion-title *ngIf="actualizaFalta">Ausencia</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content class="ion-padding">
+
+    <ion-item>
+      <ion-label position="floating">Motivo</ion-label>
+      <ion-input name="nombreFalta"  [(ngModel)]="nombreFalta" required></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Observaciones</ion-label>
+      <ion-input name="observaciones"  [(ngModel)]="observaciones"></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Fecha</ion-label>
+      <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="fecha"  doneText="Ok" cancelText="Cancelar"></ion-datetime>
+    </ion-item>
+  
+  
+  
+      <ion-button *ngIf="!actualizaFalta" class="botonCrear" (click)="guardarFalta()" expand="block" shape="round">
+        Crear ausencia
+      </ion-button>
+      <ion-button *ngIf="actualizaFalta" class="botonCrear" (click)="actualizarFalta()" expand="block" shape="round">
+        Actualizar ausencia
+      </ion-button>
+      <ion-button *ngIf="actualizaFalta" class="botonEliminar" (click)="eliminarFalta()" expand="block" shape="round" color="danger">
+        Eliminar ausencia
+      </ion-button>
+  
+  </ion-content>
+

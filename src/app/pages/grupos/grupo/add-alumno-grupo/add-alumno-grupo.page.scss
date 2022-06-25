@@ -1,0 +1,25 @@
+.tarjetaAlumno{
+    width: 100%;
+}
+.item{
+    margin:1px auto;
+  }
+
+  .nombreAlumno{
+      margin-top: 2%;
+      font-weight: bold;
+  }
+ .correo{
+     font-size: smaller;
+ }
+
+.listadoAlumnos{
+    min-height: 400px;
+    max-height:800px;
+      overflow-y: scroll;
+}
+
+ion-spinner{
+    margin-top: 50%;
+    zoom:300%
+}

@@ -1,0 +1,65 @@
+
+
+<ion-content>
+  <div style="height: 100%; display: flex; align-items: center; justify-content: center;">
+  <ion-card class="ion-text-center">
+    <ion-card-header>
+      <ion-card-subtitle>Selecciona el tipo de usuario que quieres ser</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-card class="ion-text-center" (click)="actualizaUsuarioClub()">
+        <ion-card-header>
+          <ion-card-title>Club</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+         <p>texto explicativo</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="ion-text-center"  (click)="actualizaUsuarioProfesor()">
+        <ion-card-header>
+          <ion-card-title>Profesor</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p>texto explicativo</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="ion-text-center"  (click)="actualizaUsuarioAlumno()">
+        <ion-card-header>
+          <ion-card-title>Alumno</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <p>texto explicativo</p>
+        </ion-card-content>
+      </ion-card>
+      <!--
+  <ion-list lines="none">
+    <ion-radio-group value="biff">
+  
+      <ion-item>
+        <ion-label>Profesor</ion-label>
+        <ion-radio slot="start" value="biff"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Alumno</ion-label>
+        <ion-radio slot="start" value="griff"></ion-radio>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Club</ion-label>
+        <ion-radio slot="start" value="buford"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+    -->
+    </ion-card-content>
+  
+  </ion-card>
+</div>
+</ion-content>

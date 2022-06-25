@@ -1,0 +1,177 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="/main/tabs/profesores"></ion-back-button>
+
+    </ion-buttons>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!cargando">
+  <ion-card color="light" class="tarjetaPerfil">
+    <div class="img-wrapper">
+      <ion-avatar (click)="cambiaAvatar($event)"> <img src={{avatar}}>
+      </ion-avatar>
+      <ion-fab horizontal="end"  edge>
+        <ion-fab-button size="small" class="botonFoto" (click)="cambiaAvatar($event)">
+          <ion-icon name="camera-outline"></ion-icon>
+        </ion-fab-button>   
+      </ion-fab>
+     
+    </div>
+    <ion-icon slot="icon-only" name="ellipsis-vertical-outline" color="primary" ></ion-icon>
+    <ion-card-content class="ion-text-center">
+      <h2>{{profesor.nombre}} {{profesor.apellidos}}</h2>
+      <ion-text color="medium">
+        <div *ngIf="profesor.telefono != (null || '' || undefined)  " style="display: flex;" class="ion-justify-content-center">
+          <ion-icon name="call-outline" color="medium">
+          </ion-icon>
+          <p>&nbsp;{{profesor.telefono}}</p>
+        </div>
+        <div *ngIf="profesor.nacimiento != (null || '' || undefined)" style="display: flex;" class="ion-justify-content-center">
+          <ion-icon name="calendar-outline" color="medium">
+          </ion-icon>
+          <p>&nbsp;{{profesor.nacimiento}}</p>
+        </div>
+        <div *ngIf="profesor.email != (null || '' || undefined)" style="display: flex;" class="ion-justify-content-center">
+          <ion-icon name="mail-outline" color="medium">
+          </ion-icon>
+          <p>&nbsp;{{profesor.email}}</p>
+        </div>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+          <ion-card class ="tarjetaAlumno" (click)="goToPlanificaciones()">
+            <ion-grid>
+            <ion-row>
+              <ion-col >
+                <ion-icon name="documents-outline"></ion-icon>
+          
+           </ion-col>
+           <ion-col></ion-col>
+            </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col  offset="-9">
+  
+                    <p class="nombreTarjeta">Planificaciones</p>
+                 
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+
+      </ion-col>
+
+      <ion-col>
+
+      
+        <ion-card class ="tarjetaAlumno" (click)="goToEjercicios()">
+          <ion-grid>
+          <ion-row>
+            <ion-col >
+              <ion-icon name="tennisball-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Ejercicios</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+      </ion-col>
+    
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class ="tarjetaAlumno" (click)="goToGrupos()">
+          <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-icon name="people-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Grupos</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class ="tarjetaAlumno" (click)="goToAlumnos()">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-icon name="person-outline"></ion-icon>
+           </ion-col>
+           <ion-col></ion-col>
+            </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col offset="-9">
+                    <p class="nombreTarjeta">Alumnos</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <ion-card class ="tarjetaAlumno" (click)="goToCalendario()">
+          <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-icon name="calendar-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Calendario</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class ="tarjetaAlumno" (click)="goToClases()">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-icon name="clipboard-outline"></ion-icon>
+           </ion-col>
+           <ion-col></ion-col>
+            </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col offset="-9">
+                    <p class="nombreTarjeta">Clases de hoy</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>

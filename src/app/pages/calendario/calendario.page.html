@@ -1,0 +1,77 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button style="display: block;" (click)="goToAnterior()"></ion-back-button>
+
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="cambiaModo()" >
+        <ion-icon *ngIf="!vistaSchedule" slot="icon-only" name="time-outline"></ion-icon>
+        <ion-icon *ngIf="vistaSchedule" slot="icon-only" name="calendar-outline"></ion-icon>
+
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="vistaSchedule" mode="ios" class="ion-text-center">{{fechaElegida}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-card class="tarjetaCalendario" *ngIf="!vistaSchedule">
+  <ion-card-content>
+    <ion-calendar [(ngModel)]="date" (change)="onChange($event)" [type]="type" [format]="'DD-MM-YYYY'"
+      [options]="opciones">
+    </ion-calendar>
+  </ion-card-content>
+</ion-card>
+
+<ion-content *ngIf="!vistaSchedule">
+
+      <ion-list lines="none" *ngIf="!cargando">
+
+        <ion-item-sliding button *ngFor="let clase of clases">
+          <ion-item>
+            <ion-card class="tarjetaClase" 
+            [ngClass]="{'animate__animated ': clase.animaTarjeta , 'animate__jello': clase.animaTarjeta }"
+            [ngStyle]="{'background-color':clase.colorTarjeta}" 
+            (press)="onPress($event, clase)"
+            (pressup)="onPressUp($event,clase)"
+            (click)="clickTarjeta(clase)">
+              <ion-card-content>
+                <ion-row>
+                  <ion-col size="11">
+                <p *ngIf="clase.grupoId != '0'" class="nombreGrupo"><b>Grupo: </b>{{clase.nombre}}</p>
+                <p *ngIf="clase.alumnoId != '0'" class="nombreGrupo"><b>Alumno: </b>{{clase.nombre}}</p>
+                <p class="horario"><b>Horario: </b>{{clase.horaInicio}} - {{clase.horaFin}}</p>
+                <p class="nombrePlanificacion"><b>Planificación:</b> {{clase.nombreSemana}} </p>
+              </ion-col>
+              <ion-col class=circulo size="0.6" [ngStyle]="{'background': clase.color}">
+                
+              </ion-col>
+              </ion-row>
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+      <ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn"
+      color="danger" (click)="eliminarClase()" expand="block" shape="round">
+      <ion-icon name="trash-outline"></ion-icon>Eliminar clases
+      </ion-button>
+    </ion-content>
+
+
+      <ion-content *ngIf="vistaSchedule">
+       
+
+       <ng-template #template let-displayEvent="displayEvent">
+        <div class="calendar-event-inner">
+          <p [ngStyle]="{'background': displayEvent.event.color}">{{displayEvent.event.title}}<br>{{displayEvent.event.planificacion}}</p>
+          </div>
+    </ng-template>
+      <calendar [lockSwipes]="true" [dayviewNormalEventTemplate]="template"
+       [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
+        (onCurrentDateChanged)="onCurrentDateChanged($event)" (onEventSelected)="onEventSelected($event)"
+        (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" [step]="calendar.step">
+   
+      </calendar>
+
+
+</ion-content>

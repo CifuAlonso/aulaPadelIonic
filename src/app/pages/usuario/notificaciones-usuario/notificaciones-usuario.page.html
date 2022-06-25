@@ -1,0 +1,39 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Editar datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Clases</ion-label>
+      <ion-toggle slot="start" name="apple"  checked></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Anuncios AulaPadel</ion-label>
+      <ion-toggle slot="start" name="apple"  checked></ion-toggle>
+    </ion-item>
+
+    
+    <ion-item>
+      <ion-label>Alumnos</ion-label>
+      <ion-toggle slot="start" name="apple"  checked></ion-toggle>
+    </ion-item>
+
+
+   
+  </ion-list>
+
+    <ion-button class="botonCrear" (click)="actualizarNotificaciones()" expand="block" shape="round">
+      Actualizar datos
+    </ion-button>
+
+</ion-content>

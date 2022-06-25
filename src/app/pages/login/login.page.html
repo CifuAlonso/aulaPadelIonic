@@ -1,0 +1,157 @@
+<ion-content>
+
+
+  <ion-slides class="mainSlide" #slideLogin>
+
+    <ion-slide>
+
+      <form (ngSubmit)="login( fLogin )" #fLogin="ngForm">
+        <ion-grid fixed>
+
+          <ion-row>
+            <ion-col>
+              <img class="logo" src="/assets/icon/logo512.jpg">
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+
+              <ion-list>
+
+                <ion-item>
+                  <ion-label position="floating">Email</ion-label>
+                  <ion-input name="email" type="email" [(ngModel)]="loginUser.email" required></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Password</ion-label>
+                  <ion-input name="password" type="password" [(ngModel)]="loginUser.password" required></ion-input>
+                </ion-item>
+
+              </ion-list>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" type="submit" color="primary" shape="round">
+                Login
+              </ion-button>
+
+              <ion-label class="passwordOlvidada" (click)="cambiaPass()">¿Has olvidado tu contraseña?</ion-label>
+<!--
+              <ion-button class="loginGoogle"  expand="block" type="submit" color="primary" shape="round">
+                Entrar con Google
+              </ion-button>
+              <ion-button class="loginFacebook" expand="block" type="submit" color="primary" shape="round">
+                Entrar con Facebook
+              </ion-button>
+-->
+            </ion-col>
+
+          </ion-row>
+
+        </ion-grid>
+      </form>
+
+
+
+    </ion-slide>
+
+    <ion-slide>
+      <ion-grid fixed>
+
+        <form (ngSubmit)="registro( fRegistro )" #fRegistro="ngForm">
+          <ion-row>
+            <ion-col>
+              <img class="logo" src="/assets/icon/logo512.jpg">
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+
+              <ion-list>
+
+                <ion-item>
+                  <ion-label position="floating">Email</ion-label>
+                  <ion-input name="email" type="email" [(ngModel)]="registroUser.email" required></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Repite tu email</ion-label>
+                  <ion-input name="email2" type="email" [(ngModel)]="registroUser.email2" required></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Nombre</ion-label>
+                  <ion-input name="nombre" type="text" [(ngModel)]="registroUser.nombre" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Apellidos</ion-label>
+                  <ion-input name="apellidos" type="text" [(ngModel)]="registroUser.apellidos" required></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Password</ion-label>
+                  <ion-input name="password" type="password" [(ngModel)]="registroUser.password" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Repite tu password</ion-label>
+                  <ion-input name="password2" type="password" [(ngModel)]="registroUser.password2" required></ion-input>
+                </ion-item>
+
+                <ion-item>
+                  <ion-label position="floating">Teléfono</ion-label>
+                  <ion-input name="telefono" type="number" [(ngModel)]="registroUser.telefono" required></ion-input>
+                </ion-item>
+
+              </ion-list>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-button expand="block" type="submit" color="primary" shape="round">
+                Crear usuario
+              </ion-button>
+            </ion-col>
+          </ion-row>
+
+        </form>
+      </ion-grid>
+
+
+    </ion-slide>
+
+
+  </ion-slides>
+
+
+
+</ion-content>
+
+
+<ion-footer no-border>
+  <ion-toolbar>
+
+    <ion-row>
+
+      <ion-col>
+        <ion-button shape="round" expand="full" size="small" fill="outline" color="primary" (click)="mostrarRegistro()">
+          Ingresar
+        </ion-button>
+      </ion-col>
+
+      <ion-col>
+        <ion-button shape="round" expand="full" size="small" fill="outline" color="primary" (click)="mostrarLogin()">
+          Registrarme
+        </ion-button>
+      </ion-col>
+
+    </ion-row>
+
+
+
+  </ion-toolbar>
+</ion-footer>

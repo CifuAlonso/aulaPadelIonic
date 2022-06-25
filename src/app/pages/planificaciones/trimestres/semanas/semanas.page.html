@@ -1,0 +1,68 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/trimestres"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="mostrarAddSemana()">
+        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="titulo">
+    <p class="comiteTitulo"> Clases </p>
+
+    <p class="nombreAlumno" *ngIf="!cargando">{{planificacion.nombre}} - {{trimestre.nombre}}</p>
+  </div>
+  <div class="seleccionDetalle">
+    <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+      cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+
+
+    <ion-grid *ngIf="!cargando">
+      <ion-row>
+        <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let semana of semanas | filter:terminoBusqueda"
+          #planificacionesAnimacion>
+          <ion-card
+            [ngClass]="{'animate__animated ': semana.animaTarjeta , 'animate__jello': semana.animaTarjeta }"
+            [ngStyle]="{'background-color':semana.colorTarjeta}" (press)="onPress($event, semana)"
+            (pressup)="onPressUp($event,semana)" (click)="clickTarjeta(semana)">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-icon color="primary" name="clipboard-outline"></ion-icon>
+                </ion-col>
+                <ion-col></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col offset="-9">
+                  <p class="nombrePlanificacion">{{semana.nombre}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+
+
+
+        </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+
+  </div>
+
+</ion-content>
+<div class="fondoBotones">
+<ion-button *ngIf="seleccionaEliminar && eliminados.length===1" class="animate__animated animate__fadeIn"
+  color="primary" (click)="mostrarAddSemana()" expand="block" shape="round">
+  <ion-icon name="pencil-outline"></ion-icon>Editar clase
+</ion-button>
+<ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn" color="danger"
+  (click)="eliminarSemana()" expand="block" shape="round">
+  <ion-icon name="trash-outline"></ion-icon>Eliminar clase
+</ion-button>
+</div>

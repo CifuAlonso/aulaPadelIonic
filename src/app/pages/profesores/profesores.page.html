@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+  
+        <ion-buttons slot="start">
+          <ion-back-button   defaultHref="/main/tabs/home"></ion-back-button>
+          </ion-buttons>
+          
+          <ion-title mode="ios" class="ion-text-center">Mis profesores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!cargando">
+  <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+    cancel-button-text="Cancelar" animated></ion-searchbar>
+  
+   
+  <ion-list lines="none">
+
+    <ion-item-sliding *ngFor="let profesor of profesores">
+      <ion-item>
+        <ion-card class ="tarjetaAlumno"
+        [ngClass]="{'animate__animated ': profesor.animaTarjeta , 'animate__jello': profesor.animaTarjeta }"
+        [ngStyle]="{'background-color':profesor.colorTarjeta}" 
+        (press)="onPress($event, profesor)"
+        (pressup)="onPressUp($event,profesor)"
+        (click)="clickTarjeta(profesor)">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="4">
+                <ion-avatar item-start> <img src={{profesor.avatar}}>
+                </ion-avatar>
+              </ion-col>
+              <ion-col>
+                  <p class="nombreAlumno">{{profesor.nombre}} {{profesor.apellidos}}</p>
+                  <p class="correo">{{profesor.email}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+      </ion-item>
+
+
+    </ion-item-sliding>
+
+  </ion-list>
+
+</ion-content>
+
+<ion-content *ngIf="cargando">
+  <div class="ion-text-center">
+    <ion-spinner name="bubbles" color="primary"></ion-spinner>
+  </div>
+</ion-content>
+<ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn"
+color="danger" (click)="eliminarAlumno()" expand="block" shape="round">
+<ion-icon name="trash-outline"></ion-icon>Eliminar profesor
+</ion-button>

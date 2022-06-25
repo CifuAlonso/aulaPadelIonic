@@ -1,0 +1,50 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title  >Añadir ejercicios</ion-title>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="titulo">
+    <p class="comiteTitulo"> Ejercicios sin grupo </p>
+    <p class="explicacion">Selecciona los ejercicios que quieres añadir al grupo</p>
+  </div>
+  <div class="seleccionEjercicio" >
+  <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+    cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+
+  <ion-list lines="none" *ngIf="!cargando">
+    <ion-item-sliding button *ngFor="let ejercicio of ejercicios | filter:terminoBusqueda; let i=index">
+      <ion-item>
+        <ion-checkbox slot="end" (click)="addEjercicioLista(ejercicio)"></ion-checkbox>
+        <ion-card class="ion-text-center tarjetaEjercicio" >
+      <ion-card-header>
+        <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombre}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-item>
+        <ion-item-options side="end">
+          <ion-item-option color=transparent (click)="mostrarAddEjercicio(ejercicio)">
+            <ion-icon slot="icon-only" name="options-outline" color="secondary"></ion-icon>
+          </ion-item-option>
+          <ion-item-option color=transparent (click)="eliminarEjercicio(ejercicio)">
+            <ion-icon slot="icon-only" name="trash-outline" color="danger"></ion-icon>
+          </ion-item-option>
+
+        </ion-item-options>
+ 
+    </ion-item-sliding>
+  </ion-list>
+  <ion-button class="botonCrear" (click)="addEjerciciosGrupo()" expand="block" shape="round">
+    Añadir ejercicios
+  </ion-button>
+</div>
+
+
+</ion-content>

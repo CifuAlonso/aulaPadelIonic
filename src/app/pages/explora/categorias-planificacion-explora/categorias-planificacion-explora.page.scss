@@ -1,0 +1,33 @@
+
+.item{
+    margin:1px auto;
+  }
+  .scroll-items {
+    justify-content: flex-start; // changed
+    flex-wrap: nowrap;
+    overflow-x: scroll !important;
+    overflow-y: hidden;
+  }
+  .scroll-items ion-col { // added
+      display: flex;
+      flex-wrap: nowrap;
+  }
+  .nombreGrupo{
+      margin-top: 2%;
+      margin-left: 5%;
+  }
+ .detalles{
+     font-size: smaller;
+ }
+
+ .iconoGrupo{
+    zoom: 400%;
+    color: #a0a537;
+    margin-left: 15%;
+}
+
+ion-title{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    color: #3e4208;
+}

@@ -1,0 +1,70 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title >Añadir alumnos</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content>
+
+
+    <div class="seleccionEjercicio" >
+      
+      <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+        cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+
+        <div class="ion-text-center" *ngIf="cargando">
+          <ion-spinner name="bubbles" color="primary"></ion-spinner>
+        </div>
+<!--
+        <ion-item>
+          <ion-label>Selecciona un nivel</ion-label>
+          <ion-select [(ngModel)]="nivel" (ionChange)="searchChanged($event)">
+            <ion-select-option value="">Todos</ion-select-option>
+            <ion-select-option value="1">Menores:Base</ion-select-option>
+            <ion-select-option value="2">Menores:Avanzado</ion-select-option>
+            <ion-select-option value="3">Menores:Competición</ion-select-option>
+            <ion-select-option value="4">Adultos:Iniciación</ion-select-option>
+            <ion-select-option value="5">Adultos:Intermedio</ion-select-option>
+            <ion-select-option value="6">Adultos:Competición</ion-select-option>
+          </ion-select>
+        </ion-item>
+    -->
+
+      <ion-list lines="none" *ngIf="!cargando" class="listadoAlumnos">      
+        <ion-item-sliding button *ngFor="let alumno of alumnosNoGrupo | filter:terminoBusqueda; let i=index">
+          <ion-item>
+            <ion-checkbox slot="end" (click)="addAlumnoLista(alumno)"></ion-checkbox>
+            <ion-card class ="tarjetaAlumno">
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="4">
+                    <ion-avatar item-start> <img src={{alumno.foto}} />
+                    </ion-avatar>
+                  </ion-col>
+                  <ion-col>
+                      <p class="nombreAlumno">{{alumno.nombre}} {{alumno.apellidos}}</p>
+                      <p class="correo">{{alumno.email}}</p>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+
+
+
+    </div>
+
+  </ion-content>
+  <ion-button  class="botonCrear" (click)="addAlumnosGrupo()" expand="block" shape="round">
+    Añadir alumnos
+  </ion-button>
+

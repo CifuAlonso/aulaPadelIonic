@@ -1,0 +1,89 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!--
+        <ion-buttons slot="start">
+            <ion-back-button  defaultHref="/main/tabs/tab1"></ion-back-button>
+          </ion-buttons>
+          -->
+          <ion-title mode="ios" class="ion-text-center">Explora</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+          <ion-card class ="tarjetaAlumno" (click)="goToGrupoVideoLibros()">
+            <ion-grid>
+            <ion-row>
+              <ion-col >
+                <ion-icon name="book-outline"></ion-icon>
+          
+           </ion-col>
+           <ion-col></ion-col>
+            </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col  offset="-9">
+  
+                    <p class="nombreTarjeta">VideoLibro de AulaPadel</p>
+                 
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+
+      </ion-col>
+
+      <ion-col>
+
+      
+        <ion-card class ="tarjetaAlumno" (click)="goToPlanificaciones()">
+          <ion-grid>
+          <ion-row>
+            <ion-col >
+              <ion-icon name="documents-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Planificaciones de AulaPadel</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+      </ion-col>
+    
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class ="tarjetaAlumno" (click)="goToEjercicios()">
+          <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-icon name="tennisball-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Ejercicios de AulaPadel</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col></ion-col>
+     
+    
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

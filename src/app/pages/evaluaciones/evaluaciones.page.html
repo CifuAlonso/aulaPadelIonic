@@ -1,0 +1,52 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/alumno"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="mostrarAddComite()">
+        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="!cargando">
+  <div class="titulo">
+    <p class="comiteTitulo"> Evaluaciones </p>
+
+    <p class="nombreAlumno">{{alumno.nombre}} {{alumno.apellidos}}</p>
+  </div>
+  <div class="seleccionEvaluacion" >
+  <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+    cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+
+  <ion-list lines="none">
+    <ion-item-sliding button *ngFor="let comite of comites | filter:terminoBusqueda; let i=index">
+    
+      <ion-item>
+        <ion-card class="ion-text-center tarjetaEvaluacion"
+        [ngClass]="{'animate__animated ': comite.animaTarjeta , 'animate__jello': comite.animaTarjeta }"
+        [ngStyle]="{'background-color':comite.colorTarjeta}" (press)="onPress($event, comite)"
+        (pressup)="onPressUp($event,comite)" (click)="clickTarjeta(comite)">
+      <ion-card-header>
+        <ion-card-title style=" font-size: 100%; font-weight: 500;">{{comite.fecha}}</ion-card-title>
+          </ion-card-header>
+        </ion-card>
+      </ion-item>
+      
+ 
+    </ion-item-sliding>
+  </ion-list>
+
+</div>
+</ion-content>
+<div class="fondoBoton">
+<ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn"
+color="primary" (click)="enviaPdf()" expand="block" shape="round">
+<ion-icon name="send-outline"></ion-icon>Enviar comités
+</ion-button>
+<ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn"
+color="danger" (click)="eliminarComite()" expand="block" shape="round">
+<ion-icon name="trash-outline"></ion-icon>Eliminar comités
+</ion-button>
+</div>

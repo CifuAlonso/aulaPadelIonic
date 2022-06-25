@@ -1,0 +1,170 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button style="display: block;" (click)="goToAnterior()"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="abrePopOver($event)">
+        <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="titulo">
+    <p class="comiteTitulo"> Ejercicios </p>
+
+    <p class="nombreAlumno" *ngIf="!cargando">{{nombreSemana}}</p>
+
+  </div>
+  <div class="seleccionEjercicio" *ngIf="!cargando">
+    <ion-slides [pager]="true">
+      <ion-slide>
+        <ion-card>
+          <ion-card-header>
+            Entrada en calor
+          </ion-card-header>
+          <ion-card-content>
+            <div class="content" *ngIf="!cargando">
+
+              <ion-list slot="content" lines="none">
+                <ion-reorder-group (ionItemReorder)="doReorder($event,1)" disabled={{mueveEjercicios}}>
+                  <ion-item-sliding button *ngFor="let ejercicio of calentamiento">
+
+                    <ion-item>
+                      <ion-card class="ion-text-center tarjetaEjercicio"
+                        [ngClass]="{'animate__animated ': ejercicio.animaTarjeta , 'animate__jello': ejercicio.animaTarjeta }"
+                        [ngStyle]="{'background-color':ejercicio.colorTarjeta}" (press)="onPress($event, ejercicio)"
+                        (pressup)="onPressUp($event,ejercicio)" (click)="clickTarjeta(ejercicio)">
+                        <ion-card-header>
+                          <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombreEjercicio}}
+                          </ion-card-title>
+                        </ion-card-header>
+                      </ion-card>
+
+                      <ion-reorder slot="end"></ion-reorder>
+                    </ion-item>
+                  </ion-item-sliding>
+                </ion-reorder-group>
+              </ion-list>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card>
+          <ion-card-header>
+            Tema principal
+          </ion-card-header>
+          <ion-card-content>
+            <div class="content" *ngIf="!cargando">
+
+              <ion-list slot="content" lines="none" *ngIf="!cargando">
+                <ion-reorder-group (ionItemReorder)="doReorder($event,2)" disabled={{mueveEjercicios}}>
+                  <ion-item-sliding button *ngFor="let ejercicio of principal">
+                    <ion-item>
+                      <ion-card class="ion-text-center tarjetaEjercicio"
+                        [ngClass]="{'animate__animated ': ejercicio.animaTarjeta , 'animate__jello': ejercicio.animaTarjeta }"
+                        [ngStyle]="{'background-color':ejercicio.colorTarjeta}" (press)="onPress($event, ejercicio)"
+                        (pressup)="onPressUp($event,ejercicio)" (click)="clickTarjeta(ejercicio)">
+                        <ion-card-header>
+                          <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombreEjercicio}}
+                          </ion-card-title>
+                        </ion-card-header>
+                      </ion-card>
+                      <ion-reorder slot="end"></ion-reorder>
+                    </ion-item>
+
+                  </ion-item-sliding>
+                </ion-reorder-group>
+              </ion-list>
+
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card>
+          <ion-card-header>
+            Práctica del tema principal
+          </ion-card-header>
+          <ion-card-content>
+            <div class="content" *ngIf="!cargando">
+
+              <ion-list slot="content" lines="none" *ngIf="!cargando">
+                <ion-reorder-group (ionItemReorder)="doReorder($event,3)" disabled={{mueveEjercicios}}>
+
+                  <ion-item-sliding button *ngFor="let ejercicio of practicaPrincipal">
+                    <ion-item>
+                      <ion-card class="ion-text-center tarjetaEjercicio"
+                        [ngClass]="{'animate__animated ': ejercicio.animaTarjeta , 'animate__jello': ejercicio.animaTarjeta }"
+                        [ngStyle]="{'background-color':ejercicio.colorTarjeta}" (press)="onPress($event, ejercicio)"
+                        (pressup)="onPressUp($event,ejercicio)" (click)="clickTarjeta(ejercicio)">
+                        <ion-card-header>
+                          <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombreEjercicio}}
+                          </ion-card-title>
+                        </ion-card-header>
+                      </ion-card>
+                      <ion-reorder slot="end"></ion-reorder>
+                    </ion-item>
+
+                  </ion-item-sliding>
+                </ion-reorder-group>
+              </ion-list>
+
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      <ion-slide>
+        <ion-card>
+          <ion-card-header>
+            Vuelta a la calma
+          </ion-card-header>
+          <ion-card-content>
+            <div class="content" *ngIf="!cargando">
+
+              <ion-list slot="content" lines="none" *ngIf="!cargando">
+                <ion-reorder-group (ionItemReorder)="doReorder($event,4)" disabled={{mueveEjercicios}}>
+
+                  <ion-item-sliding button *ngFor="let ejercicio of vueltaCalma">
+                    <ion-item>
+                      <ion-card class="ion-text-center tarjetaEjercicio"
+                        [ngClass]="{'animate__animated ': ejercicio.animaTarjeta , 'animate__jello': ejercicio.animaTarjeta }"
+                        [ngStyle]="{'background-color':ejercicio.colorTarjeta}" (press)="onPress($event, ejercicio)"
+                        (pressup)="onPressUp($event,ejercicio)" (click)="clickTarjeta(ejercicio)">
+                        <ion-card-header>
+                          <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombreEjercicio}}
+                          </ion-card-title>
+                        </ion-card-header>
+                      </ion-card>
+                      <ion-reorder slot="end"></ion-reorder>
+                    </ion-item>
+
+                  </ion-item-sliding>
+                </ion-reorder-group>
+              </ion-list>
+
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="cargando">
+  <div class="ion-text-center">
+    <ion-spinner name="bubbles" color="primary"></ion-spinner>
+  </div>
+</ion-content>
+<div class="boton">
+  <ion-button *ngIf="!mueveEjercicios" class="botonCrear" (click)="actualizaPosiciones()" expand="block" shape="round">
+    Guardar cambios
+  </ion-button>
+  <ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn"
+color="danger" (click)="eliminarEjercicio()" expand="block" shape="round">
+<ion-icon name="trash-outline"></ion-icon>Eliminar ejercicios
+</ion-button>
+</div>

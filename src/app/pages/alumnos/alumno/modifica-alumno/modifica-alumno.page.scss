@@ -1,0 +1,76 @@
+
+.accordion-container,
+.accordion-container .arrow,
+.accordion-container .arrow:before,
+.accordion-container .arrow:after,
+.accordion-container .content {
+  transition: all .3s ease-in-out;
+}
+.accordion-container .arrow {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+}
+.accordion-container .arrow,
+.accordion-container .arrow:before,
+.accordion-container .arrow:after {
+  border-radius: 25px;
+}
+.accordion-container .arrow:before {
+  content: " ";
+  width: 15px;
+  height: 4px;
+  left: 50%;
+  margin-left: -8px;
+  background-color: #a0a537;
+  position: absolute;
+  transform: rotate(45deg);
+}
+.accordion-container .arrow:after {
+  content: " ";
+  width: 15px;
+  height: 4px;
+  background-color: #a0a537;
+  position: absolute;
+  right: -15px;
+  transform: rotate(-45deg);
+}
+.accordion-container.open .arrow:before {
+  transform: rotate(-45deg);
+}
+.accordion-container.open .arrow:after {
+  transform: rotate(45deg);
+}
+.accordion-container {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  background: white;
+  padding: 10px;
+  margin: 10px;
+}
+.accordion-container.open {
+  cursor: default;
+}
+.accordion-container:hover {
+  background: #ebebeb;
+}
+.accordion-container.open:hover {
+  background: #ffffff;
+}
+.accordion-container .content {
+  opacity: 0;
+  display: none;
+}
+.accordion-container.open .content {
+    display: block;
+    opacity: 1;
+}
+
+h1{
+  color: #a0a537;
+}
+
+ion-card{
+  width: 95%;
+}

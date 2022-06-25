@@ -1,0 +1,164 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <!--
+        <ion-buttons slot="start">
+            <ion-back-button  defaultHref="/main/tabs/tab1"></ion-back-button>
+          </ion-buttons>
+          -->
+          <ion-title class="ion-text-center">Mi lugar</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+          <ion-card class ="tarjetaAlumno" (click)="goToPlanificaciones()">
+            <ion-grid>
+            <ion-row>
+              <ion-col >
+                <ion-icon name="documents-outline"></ion-icon>
+
+           </ion-col>
+           <ion-col></ion-col>
+            </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col  offset="-9">
+
+                    <p class="nombreTarjeta">Planificaciones</p>
+
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+
+      </ion-col>
+
+      <ion-col>
+
+
+        <ion-card class ="tarjetaAlumno" (click)="goToEjercicios()">
+          <ion-grid>
+          <ion-row>
+            <ion-col >
+              <ion-icon name="tennisball-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Ejercicios</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+      </ion-col>
+
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card *ngIf ="usuario.tipo === 3" class ="tarjetaAlumno" (click)="goToProfesores()">
+          <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-icon name="people-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Profesores</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+        <ion-card *ngIf ="usuario.tipo === 2" class ="tarjetaAlumno" (click)="goToGrupos()">
+          <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-icon name="people-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Grupos</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class ="tarjetaAlumno" (click)="goToAlumnos()">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-icon name="person-outline"></ion-icon>
+           </ion-col>
+           <ion-col></ion-col>
+            </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col offset="-9">
+                    <p class="nombreTarjeta">Alumnos</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <ion-card class ="tarjetaAlumno" (click)="goToCalendario()">
+          <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-icon name="calendar-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Calendario</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class ="tarjetaAlumno" (click)="goToClases()">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-icon name="clipboard-outline"></ion-icon>
+           </ion-col>
+           <ion-col></ion-col>
+            </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col offset="-9">
+                    <p class="nombreTarjeta">Clases de hoy</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="!actualizasugerencia">Nueva sugerencia</ion-title>
+    <ion-title *ngIf="actualizasugerencia">Sugerencia</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content class="ion-padding">
+
+    <ion-item>
+      <ion-label position="stacked">Sugerencia:</ion-label>
+      <ion-textarea  [(ngModel)]="textoSugerencia" rows="10" placeholder="escribe aquí la sugerencia"></ion-textarea>
+    </ion-item>
+  
+      <ion-button *ngIf="!actualizasugerencia" class="botonCrear" (click)="guardarsugerencia()" expand="block" shape="round">
+        Crear sugerencia
+      </ion-button>
+      <ion-button *ngIf="actualizasugerencia" class="botonCrear" (click)="actualizarsugerencia()" expand="block" shape="round">
+        Actualizar sugerencia
+      </ion-button>
+      <ion-button *ngIf="actualizasugerencia" class="botonEliminar" (click)="eliminarsugerencia()" expand="block" shape="round" color="danger">
+        Eliminar sugerencia
+      </ion-button>
+  
+  </ion-content>
+

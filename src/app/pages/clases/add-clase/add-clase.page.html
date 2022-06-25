@@ -1,0 +1,172 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Nueva clase</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p style="text-align: center;">Selecciona el tipo de clase</p>
+  <ion-segment mode="ios" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="grupo">
+      <ion-label>Grupo</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="alumno">
+      <ion-label>Alumno</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <br>
+  <ion-segment mode="ios" (ionChange)="segmentCantidadClases($event)">
+    <ion-segment-button value="unica">
+      <ion-label>Clase única</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="multiple">
+      <ion-label>Grupo de clases</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-item *ngIf="cantidadClases==='unica'">
+    <ion-label position="floating">Fecha</ion-label>
+    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="fecha"  doneText="Ok" cancelText="Cancelar" required></ion-datetime>
+    </ion-item>
+
+    <ion-row *ngIf="cantidadClases==='multiple'">
+      <ion-col>
+      <ion-item>
+        <ion-label position="floating">Fecha inicio</ion-label>
+        <ion-datetime displayFormat="DD-MM-YYYY" max="2099-10-31" [(ngModel)]="fechaInicio"  doneText="Ok" cancelText="Cancelar" required></ion-datetime>
+      </ion-item>
+    </ion-col>
+    <ion-col>
+      <ion-item>
+        <ion-label position="floating">Fecha fin</ion-label>
+        <ion-datetime displayFormat="DD-MM-YYYY" max="2099-10-31" [(ngModel)]="fechaFin"  doneText="Ok" cancelText="Cancelar" required></ion-datetime>
+      </ion-item>
+    </ion-col>
+    </ion-row>
+
+    <ion-item *ngIf="cantidadClases==='multiple'">
+      <ion-label>Repetir cada</ion-label>
+      <ion-select multiple="true" placeholder="Días de la semana con clase" [(ngModel)]="diasSemanaClase" >
+        <ion-select-option value=1>
+          Lunes
+        </ion-select-option> 
+        <ion-select-option value=2>
+          Martes
+        </ion-select-option> 
+        <ion-select-option value=3>
+          Miercoles
+        </ion-select-option> 
+        <ion-select-option value=4>
+          Jueves
+        </ion-select-option> 
+        <ion-select-option value=5>
+          Viernes
+        </ion-select-option> 
+        <ion-select-option value=6>
+          Sábado
+        </ion-select-option> 
+        <ion-select-option value=7>
+          Domingo
+        </ion-select-option> 
+
+      </ion-select>
+    </ion-item>
+    
+
+  <ion-row>
+  <ion-col>
+  <ion-item>
+    <ion-label position="floating">Hora inicio</ion-label>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="horaInicio"  doneText="Ok" cancelText="Cancelar"></ion-datetime>
+  </ion-item>
+</ion-col>
+<ion-col>
+  <ion-item>
+    <ion-label position="floating">Hora fin</ion-label>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="horaFin"  doneText="Ok" cancelText="Cancelar"></ion-datetime>
+  </ion-item>
+</ion-col>
+</ion-row>
+
+<ion-item *ngIf="muestraAlumnos">
+  <ion-label>Alumnos</ion-label>
+  <ion-select placeholder="Selecciona el alumno" name="alumnoId"  [(ngModel)]="alumnoId">
+    <ion-select-option *ngFor="let alumno of alumnos" value={{alumno.id}}
+>{{alumno.nombre}} {{alumno.apellidos}}</ion-select-option>    
+  </ion-select>
+</ion-item>
+
+<ion-item *ngIf="muestraGrupos">
+  <ion-label>Grupos</ion-label>
+  <ion-select placeholder="Selecciona el grupo" name="grupoId"  [(ngModel)]="grupoId">
+    <ion-select-option *ngFor="let grupo of grupos" value={{grupo.id}}
+>{{grupo.nombre}}</ion-select-option>    
+  </ion-select>
+</ion-item>
+<br>
+<p style="text-align: center;">Selecciona el tipo de planificación</p>
+<ion-segment mode="ios" (ionChange)="segmentChangedPlanificacion($event)">
+  <ion-segment-button value="propia">
+    <ion-label>Mis planificaciones</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="aulapadel">
+    <ion-label>AulaPadel</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+
+  <ion-item *ngIf="tipoPlanificacion==='propia'">
+    <ion-label>Nivel</ion-label>
+    <ion-select placeholder="Selecciona un nivel" name="planificacion"  [(ngModel)]="planificacion"
+    (ionChange)="getSemanasPlanificacion($event)">
+
+      <ion-select-option *ngFor="let planificacion of planificaciones" value={{planificacion.id}}
+  >{{planificacion.nombre}}</ion-select-option>
+      
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="tipoPlanificacion==='aulapadel'">
+    <ion-label>Nivel</ion-label>
+    <ion-select placeholder="Selecciona un nivel" name="nivelPlanificacionExplora"  [(ngModel)]="nivelPlanificacionExplora"
+    (ionChange)="getSemanasPlanificacionExplora($event)">
+
+      <ion-select-option *ngFor="let nivel of nivelesPlanificacionExplora" value={{nivel.id}}
+  >{{nivel.titulo}}</ion-select-option>
+      
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="muestraSemanas">
+    <ion-label>Semana</ion-label>
+    <ion-select  placeholder="Selecciona una clase de la planificación" name="semana"  [(ngModel)]="semana"
+    (ionChange)="getSemanaSeleccionada($event)">
+
+      <ion-select-option *ngFor="let semana of semanas" value={{semana.id}}>{{semana.nombre}}</ion-select-option>
+      
+    </ion-select>
+  </ion-item>
+  <ion-item *ngIf="muestraSemanasExplora">
+    <ion-label>Semana</ion-label>
+    <ion-select placeholder="Selecciona una clase de la planificación" name="semanaExplora"  [(ngModel)]="semanaExplora"
+    (ionChange)="getSemanaSeleccionada($event)">
+
+      <ion-select-option *ngFor="let semana of semanasExplora" value={{semana.id}}>{{semana.titulo}}</ion-select-option>
+      
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Observaciones</ion-label>
+    <ion-textarea  [(ngModel)]="observaciones" rows="3" placeholder="escribe aquí las observaciones"></ion-textarea>
+  </ion-item>
+
+    <ion-button class="botonCrear" (click)="guardarClase()" expand="block" shape="round">
+      Crear clase
+    </ion-button>
+
+</ion-content>

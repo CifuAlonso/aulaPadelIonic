@@ -1,0 +1,68 @@
+.botonCrear{
+    margin-top: 20%;
+}
+
+.botonEliminar{
+    margin-top:15%;
+}
+
+.titulo{
+    text-align: center;
+    margin-bottom: 10%;
+}
+.comiteTitulo{
+    font-weight: bolder;
+}
+.tarjetaEjercicio{
+    width: 100%;
+}
+
+.explicacion{
+    font-size: smaller;
+    color: rgb(92, 80, 80);
+}
+
+.botonCrear{
+    margin-top: 20%;
+}
+
+.item{
+    margin:1px auto;
+  }
+
+
+
+ion-toolbar{
+    --background: transparent;
+}
+
+
+ion-card{
+    margin-bottom: 5%;
+}
+
+
+
+
+.seleccionEjercicio {
+    background-color: #fff;
+    height: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding-top: 20px;
+    overflow: scroll;
+    padding-bottom: 20px;
+}
+
+.no-transform{
+    transform: translate3d(0,0,0) !important;
+}
+
+ion-spinner{
+    margin-top: 50%;
+    zoom:300%
+}
+
+ion-segment{
+    background-color:#9fa5374d;
+}

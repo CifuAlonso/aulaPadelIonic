@@ -1,0 +1,200 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="paginaAnterior === 'clases'" style="display: block;" defaultHref="/main/tabs/clases">
+      </ion-back-button>
+      <ion-back-button *ngIf="paginaAnterior === 'calendario'" style="display: block;"
+        defaultHref="/main/tabs/calendario"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary" *ngIf="!cargando">
+      <ion-button (click)="abrePopOver($event)" *ngIf="clase.guardada===0">
+        <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="titulo" *ngIf="!cargando">
+    <p class="comiteTitulo"> Clase </p>
+
+    <p class="nombreAlumno" *ngIf="!cargando"><b>Fecha: </b>{{clase.fecha}}</p>
+    <p class="nombreAlumno" *ngIf="!cargando"><b>Hora: </b>{{clase.horaInicio}} - {{clase.horaFin}}</p>
+    <p class="nombreAlumno" *ngIf="clase.grupoId !='0'"><b>Grupo: </b>{{clase.nombre}}</p>
+
+  </div>
+  <div class="seleccionDetalle">
+    <div class="ion-text-center" *ngIf="cargando">
+      <ion-spinner name="bubbles" color="primary"></ion-spinner>
+    </div>
+
+    <ion-list lines="none" *ngIf="!cargando">
+
+      <ion-grid *ngIf="clase.grupoId != '0'">
+        <p class="alumnosClaseTitulo">Alumnos de la clase:</p>
+        <ion-row>
+          <ion-row scrollX="true" class="scroll-items">
+            <ng-container>
+              <ion-col sizeLg="4" sizeMd="4" sizeXs="5" *ngFor="let alumno of alumnos">
+                <ion-fab horizontal="end" edge>
+                  <ion-fab-button *ngIf="!clase.guardada" size="small" class="botonEliminar"
+                    (click)="eliminaUsuario(alumno.id)">
+                    <ion-icon name="close-outline"></ion-icon>
+                  </ion-fab-button>
+
+                </ion-fab>
+                <ion-card class="tarjetaEjercicio">
+                  <div (click)="goToAlumno(alumno.id)">
+                    <img src={{alumno.foto}} />
+
+                    <ion-card-header (click)="goToAlumno(alumno.id)">
+                      <ion-card-subtitle>{{alumno.nombre}} {{alumno.apellidos}}</ion-card-subtitle>
+                    </ion-card-header>
+                    <ion-card-content (click)="goToAlumno(alumno.id)">
+
+
+                      <!--
+             <p class="ion-text-center">{{alumno.nombre}} {{alumno.apellidos}}</p>
+           -->
+                    </ion-card-content>
+                  </div>
+                  <div style="text-align: center !important;" *ngIf="clase.guardada===0 && alumno.asistencia===0">
+                    <ion-button size="small" shape="round" class="botonAsistencia ion-text-center"
+                      (click)="asistenciaAlumno(alumno)">Asistencia</ion-button>
+                  </div>
+                  <div class="asistenciaNombre" style="text-align: center !important;" *ngIf="alumno.asistencia===1">
+                    Asistencia: <ion-icon style="zoom: 150%; float: right;" color="primary" name="checkmark-outline">
+                    </ion-icon>
+                  </div>
+                  <div class="asistenciaNombre" style="text-align: center !important;"
+                    *ngIf="clase.guardada===1 && alumno.asistencia===0">
+                    Asistencia: <ion-icon style="zoom: 150%; float: right;" color="danger" name="close-outline">
+                    </ion-icon>
+                  </div>
+                </ion-card>
+              </ion-col>
+              <ion-col sizeLg="4" sizeMd="4" sizeXs="5">
+                <ion-fab-button *ngIf="clase.guardada===0" class="botonAddAlumno" (click)="mostrarAddAlumnos()">
+                  <ion-icon name="add-outline"></ion-icon>
+                </ion-fab-button>
+              </ion-col>
+            </ng-container>
+
+
+          </ion-row>
+        </ion-row>
+      </ion-grid>
+
+      <ion-grid *ngIf="clase.alumnoId != '0'">
+        <p class="alumnosClaseTitulo">Alumno de la clase:</p>
+        <ion-row>
+          <ion-row scrollX="true" class="scroll-items">
+            <ng-container>
+              <ion-col sizeLg="4" sizeMd="4" sizeXs="5">
+
+                <ion-card class="tarjetaEjercicio">
+
+                  <img (click)="goToAlumno(alumno.id)" src={{alumno.foto}} />
+
+                  <ion-card-header (click)="goToAlumno(alumno.id)">
+                    <ion-card-subtitle>{{clase.nombre}}</ion-card-subtitle>
+                  </ion-card-header>
+                  <ion-card-content (click)="goToAlumno(alumno.id)">
+
+
+                  </ion-card-content>
+                  <div style="text-align: center !important;" *ngIf="clase.guardada===0 && alumno.asistencia===0">
+                    <ion-button size="small" shape="round" class="botonAsistencia ion-text-center"
+                      (click)="asistenciaAlumno(alumno)">Asistencia</ion-button>
+                  </div>
+                  <div class="asistenciaNombre" style="text-align: center !important;" *ngIf="alumno.asistencia===1">
+                    Asistencia: <ion-icon style="zoom: 150%; float: right;" color="primary" name="checkmark-outline">
+                    </ion-icon>
+                  </div>
+                  <div class="asistenciaNombre" style="text-align: center !important;"
+                    *ngIf="clase.guardada===1 && alumno.asistencia===0">
+                    Asistencia: <ion-icon style="zoom: 150%; float: right;" color="danger" name="close-outline">
+                    </ion-icon>
+                  </div>
+                </ion-card>
+              </ion-col>
+
+            </ng-container>
+
+
+          </ion-row>
+        </ion-row>
+      </ion-grid>
+
+
+      <div *ngIf="clase.semanaId != '0'">
+        <p class="grupoTitulo">Planificación: </p>
+
+        <ion-card class="ion-text-center tarjetaFalta" (click)="goToSemana()">
+          <ion-grid>
+            <ion-row>
+              <ion-card-content>
+                <ion-col>
+                  {{clase.nombreSemana}}
+                </ion-col>
+                <ion-col>
+
+                  <ion-icon style="zoom: 150%; float: right;" color="primary" name="chevron-forward-outline"></ion-icon>
+                </ion-col>
+              </ion-card-content>
+            </ion-row>
+          </ion-grid>
+
+        </ion-card>
+      </div>
+
+      <div *ngIf="clase.observaciones">
+        <p class="grupoTitulo">Observaciones: </p>
+
+        <ion-card *ngIf="clase.observaciones" class="ion-text-center tarjetaFalta">
+          <ion-card-content>{{clase.observaciones}}</ion-card-content>
+        </ion-card>
+      </div>
+
+
+      <div>
+        <p class="grupoTitulo">Puntuacion: </p>
+
+        <ion-card class="ion-text-center tarjetaFalta">
+          <ion-card-content>
+            <ionic5-star-rating *ngIf="clase.guardada===0" class="puntuacion" activeIcon="star"
+              defaultIcon="star-outline" activeColor="#bac040" defaultColor="#aaaaaa" readonly="false"
+              [rating]=clase.puntuacion fontSize="32px" (ratingChanged)="puntuaClase($event)">
+            </ionic5-star-rating>
+            <ionic5-star-rating *ngIf="clase.guardada===1" class="puntuacion" activeIcon="star"
+              defaultIcon="star-outline" activeColor="#bac040" defaultColor="#aaaaaa" readonly="true"
+              [rating]=clase.puntuacion fontSize="32px">
+            </ionic5-star-rating>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+      <div style="text-align: center !important;">
+        <ion-button *ngIf="!cargando && clase.guardada ===0" (click)="guardarClase()" shape="round"
+          class="ion-text-center">Guardar clase</ion-button>
+      </div>
+
+    </ion-list>
+    <!--
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+   
+      <ion-col size="12" class="ion-text-center">
+        <ion-button class="botonCrear" (click)="descargarPlanificacion('descargar')"  shape="round">
+          Descargar planificación
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  -->
+
+
+  </div>
+
+
+
+</ion-content>

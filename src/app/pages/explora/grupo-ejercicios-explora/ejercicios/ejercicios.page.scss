@@ -1,0 +1,140 @@
+.titulo{
+    text-align: center;
+    margin-bottom: 10%;
+}
+.comiteTitulo{
+    font-weight: bolder;
+}
+.tarjetaEjercicio{
+    width: 100%;
+}
+
+.item{
+    margin:1px auto;
+  }
+
+  :host{
+    background-color: #9fa5374d;
+    --offset-top:200px;
+}
+
+ion-toolbar{
+    --background: transparent;
+}
+
+
+ion-card{
+    margin-bottom: 5%;
+}
+
+
+ion-content {
+    --background: transparent;
+
+    transform: translate3d(0,0,0);
+    transition: 0.5s;
+    
+}
+
+.seleccionEjercicio {
+    background-color: #fff;
+    height: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding-top: 20px;
+    overflow: scroll;
+    padding-bottom: 20px;
+}
+
+.no-transform{
+    transform: translate3d(0,0,0) !important;
+}
+
+
+.accordion-container,
+.accordion-container .arrow,
+.accordion-container .arrow:before,
+.accordion-container .arrow:after,
+.accordion-container .content {
+  transition: all .3s ease-in-out;
+}
+.accordion-container .arrow {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+}
+.accordion-container .arrow,
+.accordion-container .arrow:before,
+.accordion-container .arrow:after {
+  border-radius: 25px;
+}
+.accordion-container .arrow:before {
+  content: " ";
+  width: 15px;
+  height: 4px;
+  left: 50%;
+  margin-left: -8px;
+  background-color: #a0a537;
+  position: absolute;
+  transform: rotate(45deg);
+}
+.accordion-container .arrow:after {
+  content: " ";
+  width: 15px;
+  height: 4px;
+  background-color: #a0a537;
+  position: absolute;
+  right: -15px;
+  transform: rotate(-45deg);
+}
+.accordion-container.open .arrow:before {
+  transform: rotate(-45deg);
+}
+.accordion-container.open .arrow:after {
+  transform: rotate(45deg);
+}
+.accordion-container h1 {
+    font-size: 1rem;
+    position: relative;
+    width: 100%;
+    display: block;
+    margin: 0px;
+    padding-right: 28px;
+}
+.accordion-container p {
+  font-size: 0.9rem;
+  color: white;
+}
+.accordion-container {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  background: white;
+  padding: 10px;
+  margin: 10px;
+}
+.accordion-container.open {
+  cursor: default;
+}
+.accordion-container:hover {
+  background: #ebebeb;
+}
+.accordion-container.open:hover {
+  background: #ffffff;
+}
+.accordion-container .content {
+  opacity: 0;
+  display: none;
+}
+.accordion-container.open .content {
+    display: block;
+    opacity: 1;
+}
+
+h1{
+  color: #a0a537;
+}
+
+ion-card{
+  width: 95%;
+}

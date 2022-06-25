@@ -1,0 +1,76 @@
+.tarjetaPerfil {
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    overflow: visible;
+    margin: 36px 0 24px;
+    position: relative;
+    padding-top: 60px;
+    background-color: #9fa5374d;
+    margin-left: 2%;
+    margin-right: 2%;
+
+  
+    .img-wrapper {
+      position: absolute;
+      left: 50%;
+      top: -30px;
+      transform: translateX(-50%);
+      img {
+        border-radius: 20px;
+        width: 90px;
+        height: 90px;
+      }
+  
+      ion-button {
+        --border-width: 1px;
+        --border-color: var(--ion-color-light-shade);
+        --border-style: solid;
+        --padding-start: 0;
+        --padding-end: 0;
+        --padding-bottom: 0;
+        --padding-top: 0;
+  
+        --border-radius: 50%;
+        height: 26px;
+        width: 26px;
+  
+        position: absolute;
+        right: -10px;
+        bottom: -10px;
+  
+        ion-icon {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+  }
+
+
+
+  .nombreTarjeta{
+    font-size: small;
+}
+.nombreTarjeta{
+  margin-top: -10%;
+}
+
+
+.iconoTarjeta{
+   color:#a0a537;;
+  // width: 100% !important;
+ //  height: 100% !important;
+}
+
+
+
+.botonFoto{
+    margin-top:40%;
+    margin-left: 70%;
+    zoom: 60%;
+  }
+
+  .popover-content {
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }

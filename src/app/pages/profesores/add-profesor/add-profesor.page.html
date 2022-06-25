@@ -1,0 +1,66 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Nuevo profesor</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="registro( fRegistro )" #fRegistro="ngForm">
+    <ion-row>
+      <ion-col>
+
+        <ion-list>
+
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input name="email" type="email" [(ngModel)]="registroUser.email" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Repite tu email</ion-label>
+            <ion-input name="email2" type="email" [(ngModel)]="registroUser.email2" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input name="nombre" type="text" [(ngModel)]="registroUser.nombre" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Apellidos</ion-label>
+            <ion-input name="apellidos" type="text" [(ngModel)]="registroUser.apellidos" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input name="password" type="password" [(ngModel)]="registroUser.password" required></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Repite tu password</ion-label>
+            <ion-input name="password2" type="password" [(ngModel)]="registroUser.password2" required></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label position="floating">Teléfono</ion-label>
+            <ion-input name="telefono" type="number" [(ngModel)]="registroUser.telefono" required></ion-input>
+          </ion-item>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" type="submit" color="primary" shape="round">
+          Crear usuario
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+
+</ion-content>

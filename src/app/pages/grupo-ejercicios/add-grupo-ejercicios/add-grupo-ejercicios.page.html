@@ -1,0 +1,36 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="!actualizaGrupo">Nuevo grupo de ejercicios</ion-title>
+    <ion-title *ngIf="actualizaGrupo">Grupo de ejercicios</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content class="ion-padding">
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input name="nombre"  [(ngModel)]="nombre" required></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input name="descripcion"  [(ngModel)]="descripcion"></ion-input>
+    </ion-item>
+  
+      <ion-button *ngIf="!actualizaGrupo" class="botonCrear" (click)="guardarGrupo()" expand="block" shape="round">
+        Crear grupo de ejercicios
+      </ion-button>
+      <ion-button *ngIf="actualizaGrupo" class="botonCrear" (click)="actualizarGrupo()" expand="block" shape="round">
+        Actualizar grupo de ejercicios
+      </ion-button>
+
+  
+  </ion-content>
+

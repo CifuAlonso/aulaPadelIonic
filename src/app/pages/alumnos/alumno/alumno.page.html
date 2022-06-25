@@ -1,0 +1,144 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button  *ngIf="paginaAnterior === 'alumnos'" defaultHref="/main/tabs/alumnos"></ion-back-button>
+      <ion-back-button  *ngIf="paginaAnterior === 'grupo'" defaultHref="/main/tabs/grupo"></ion-back-button>
+      <ion-back-button  *ngIf="paginaAnterior === 'clase'" defaultHref="/main/tabs/clase"></ion-back-button>
+
+    </ion-buttons>
+  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!cargando">
+  <ion-card color="light" class="tarjetaPerfil">
+    <div class="img-wrapper">
+      <ion-avatar (click)="cambiaAvatar($event)"> <img src={{alumno.foto}}>
+      </ion-avatar>
+      <ion-fab horizontal="end"  edge>
+        <ion-fab-button size="small" class="botonFoto" (click)="cambiaAvatar($event)">
+          <ion-icon name="camera-outline"></ion-icon>
+        </ion-fab-button>   
+      </ion-fab>
+     
+    </div>
+    <ion-icon slot="icon-only" name="ellipsis-vertical-outline" color="primary" ></ion-icon>
+    <ion-card-content class="ion-text-center">
+      <h2>{{alumno.nombre}} {{alumno.apellidos}}</h2>
+      <ion-text color="medium">
+        <div *ngIf="alumno.telefono != (null || '' || undefined)  " style="display: flex;" class="ion-justify-content-center">
+          <ion-icon name="call-outline" color="medium">
+          </ion-icon>
+          <p>&nbsp;{{alumno.telefono}}</p>
+        </div>
+        <div *ngIf="alumno.nacimiento != (null || '' || undefined)" style="display: flex;" class="ion-justify-content-center">
+          <ion-icon name="calendar-outline" color="medium">
+          </ion-icon>
+          <p>&nbsp;{{alumno.nacimiento}}</p>
+        </div>
+        <div *ngIf="alumno.email != (null || '' || undefined)" style="display: flex;" class="ion-justify-content-center">
+          <ion-icon name="mail-outline" color="medium">
+          </ion-icon>
+          <p>&nbsp;{{alumno.email}}</p>
+        </div>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+          <ion-card  (click)="goToEvaluaciones()">
+            <ion-grid>
+            <ion-row>
+              <ion-col >
+                <ion-icon class ="iconoTarjeta" name="document-text-outline"></ion-icon>
+          
+           </ion-col>
+           <ion-col></ion-col>
+            </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col  offset="-9">
+  
+                    <p class="nombreTarjeta">Evaluaciones</p>
+                 
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+
+      </ion-col>
+
+      <ion-col>
+
+      
+        <ion-card  (click)="goToFaltas()">
+          <ion-grid>
+          <ion-row>
+            <ion-col >
+              <ion-icon class ="iconoTarjeta" name="alert-circle-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Ausencias</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+      </ion-col>
+    
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card  (click)="goToPagos()">
+          <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-icon class ="iconoTarjeta" name="cash-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Pagos</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class ="tarjetaAlumno" (click)="goToEditaAlumno()">
+          <ion-grid>
+          <ion-row>
+            <ion-col >
+              <ion-icon class ="iconoTarjeta" name="create-outline"></ion-icon>
+        
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col  offset="-9">
+
+                  <p class="nombreTarjeta">Editar datos</p>
+               
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+
+    </ion-row>
+
+
+  </ion-grid>
+
+
+</ion-content>

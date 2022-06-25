@@ -1,0 +1,177 @@
+<ion-content>
+  <div id="application">
+    <canvas width={{widthPantalla}} height={{widthPantalla}} #canvasEl id="canvas"
+      [style.background-image]='urlPista'></canvas>
+
+    <div id="speed-slider" hidden >
+      <p>Velocidad <span id="slider-text">5</span></p>
+      <input type="range" min="1" max="10" value="3" id="slider" />
+    </div>
+
+
+    
+
+    <ion-card *ngIf=!ejercicioIniciado>
+      <div class="accordion-container"  [ngClass]="isListItemOpened ? 'open' : ''">
+       <ion-card-header (click)="toggleAccordion()">
+        <h1>
+          Elementos para la animación
+          <div class="arrow"></div>
+        </h1>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="content">
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+
+            <div class="filaMostrador" fxLayout="row" fxLayoutAlign="space-around center">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/alumna.png')"
+                src="assets/images/miniatura/alumna.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/alumno.png')"
+                src="assets/images/miniatura/alumno.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/maestro.png')"
+                src="assets/images/miniatura/maestro.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/pala_a.png')"
+                src="assets/images/miniatura/pala_a.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/pala_am.png')"
+                src="assets/images/miniatura/pala_am.png">
+            </div>
+            <div class="filaMostrador" fxLayout="row" fxLayoutAlign="space-around center">
+
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/pelota_1.png')"
+                src="assets/images/miniatura/pelota_1.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/pelota_2.png')"
+                src="assets/images/miniatura/pelota_2.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/pelota_3.png')"
+                src="assets/images/miniatura/pelota_3.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/pelota_4.png')"
+                src="assets/images/miniatura/pelota_4.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/pelota_5.png')"
+                src="assets/images/miniatura/pelota_5.png">
+            </div>
+            <div class="filaMostrador" fxLayout="row" fxLayoutAlign="space-around center">
+
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/cesta_pelotas.png')"
+                src="assets/images/miniatura/cesta_pelotas.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/escalera.png')"
+                src="assets/images/miniatura/escalera.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/cono_a.png')"
+                src="assets/images/miniatura/cono_a.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/cono_am.png')"
+                src="assets/images/miniatura/cono_am.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/cono_r.png')"
+                src="assets/images/miniatura/cono_r.png">
+
+            </div>
+            <div class="filaMostrador" fxLayout="row" fxLayoutAlign="space-around center">
+
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/cono_v.png')"
+                src="assets/images/miniatura/cono_v.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/pasos.png')"
+                src="assets/images/miniatura/pasos.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/pasos_h.png')"
+                src="assets/images/miniatura/pasos_h.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/escalera_r.png')"
+                src="assets/images/miniatura/escalera_r.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/escalera_l.png')"
+                src="assets/images/miniatura/escalera_l.png">
+            </div>
+
+            <div class="filaMostrador" fxLayout="row" fxLayoutAlign="space-around center">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/valla.png')"
+                src="assets/images/miniatura/valla.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/valla_1.png')"
+                src="assets/images/miniatura/valla_1.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/valla_2.png')"
+                src="assets/images/miniatura/valla_2.png">
+              <img style="cursor: pointer;" (click)="creaElemento('assets/images/miniatura/valla_3.png')"
+                src="assets/images/miniatura/valla_3.png">
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+      </div>
+    </ion-card>
+    <ion-card *ngIf=!ejercicioIniciado>
+      <div class="accordion-container"  [ngClass]="isListItemOpened2 ? 'open' : ''">
+       <ion-card-header (click)="toggleAccordion2()">
+        <h1>
+          Seleccionar pista
+          <div class="arrow"></div>
+        </h1>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="content">
+          <div class="filaMostrador" fxLayout="row" fxLayoutAlign="space-around center" *ngIf="!ejercicioIniciado">
+            <img style="cursor: pointer; width: 45px; height: 45px;" (click)="dibujaPista('pista.png')"
+              src='assets/pistas/pista.png'>
+            <img style="cursor: pointer; width: 45px; height: 45px;" (click)="dibujaPista('pista2.png')"
+              src='assets/pistas/pista2.png'>
+            <img style="cursor: pointer; width: 45px; height: 45px;" (click)="dibujaPista('pista3.png')"
+              src='assets/pistas/pista3.png'>
+            <img style="cursor: pointer; width: 45px; height: 45px;" (click)="dibujaPista('pista_l_1.png')"
+              src='assets/pistas/pista_l_1.png'>
+            <img style="cursor: pointer; width: 45px; height: 45px;" (click)="dibujaPista('pista_l_2.png')"
+              src='assets/pistas/pista_l_2.png'>
+  
+          </div>
+
+         
+        </div>
+      </ion-card-content>
+      </div>
+    </ion-card>
+    
+    <ion-card *ngIf="ejercicioIniciado && !ejercicioFinalizado">
+      <div class="accordion-container"  [ngClass]="isListItemOpened3 ? 'open' : ''">
+       <ion-card-header (click)="toggleAccordion3()">
+        <h1>
+          Figuras
+          <div class="arrow"></div>
+        </h1>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="content">
+          <div class="filaMostrador" fxLayout="row" fxLayoutAlign="space-around center" >
+            <img style="cursor: pointer; width: 45px; height: 45px;" (click)="creaLinea()"
+            src='assets/buttons/shapes/arrow-none.png'>
+          <img style="cursor: pointer; width: 45px; height: 45px;" (click)="creaFlecha()"
+            src='assets/buttons/shapes/arrow-end.png'>
+            <img style="cursor: pointer; width: 45px; height: 45px;" (click)="creaFlechaDoble()"
+            src='assets/buttons/shapes/arrow-both.png'>
+            <img style="cursor: pointer; width: 45px; height: 45px;" (click)="creaRectangulo()"
+            src='assets/buttons/shapes/shape-type-rectangle.png'>
+            <img style="cursor: pointer; width: 45px; height: 45px;" (click)="creaElipse()"
+            src='assets/buttons/shapes/shape-type-ellipse.png'>
+  
+          </div>
+
+         
+        </div>
+      </ion-card-content>
+      </div>
+    </ion-card>
+    
+    <div class="botones">
+    <ion-button *ngIf="!ejercicioIniciado" (click)="comienzaSecuencia()" expand="block" shape="round">
+      Comenzar animación</ion-button>
+      <ion-button *ngIf="ejercicioIniciado && !ejercicioFinalizado" expand="block" shape="round" (click)="addFrame()">Añadir escena</ion-button>
+      <ion-button *ngIf="ejercicioIniciado && !ejercicioFinalizado" expand="block" shape="round"
+      (click)="terminaEjercicio()">Terminar animación</ion-button>
+
+      <ion-button *ngIf="ejercicioFinalizado && !animacionExistente" expand="block" shape="round"
+      (click)="guardaEjercicio()">Guardar</ion-button>
+
+      <ion-button *ngIf="ejercicioFinalizado && !animacionExistente" expand="block" shape="round"
+      (click)="repiteAnimacion()">Volver a crear animación</ion-button>
+      <ion-button  expand="block" shape="round"
+      (click)="goToEjercicio()">Cerrar</ion-button>
+
+      <ion-button *ngIf="ejercicioFinalizado && animacionExistente && !esExplora"  expand="block" shape="round" color="danger"
+      (click)="eliminaAnimacion()">Eliminar animación</ion-button>
+    </div>
+    </div>
+   
+
+
+
+</ion-content>

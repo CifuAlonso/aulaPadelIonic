@@ -1,0 +1,114 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Edita clase</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="!cargando">
+
+  <ion-item>
+    <ion-label position="floating">Fecha</ion-label>
+    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="fecha"  doneText="Ok" cancelText="Cancelar" required></ion-datetime>
+    </ion-item>
+
+  <ion-row>
+  <ion-col>
+  <ion-item>
+    <ion-label position="floating">Hora inicio</ion-label>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="horaInicio"  doneText="Ok" cancelText="Cancelar"></ion-datetime>
+  </ion-item>
+</ion-col>
+<ion-col>
+  <ion-item>
+    <ion-label position="floating">Hora fin</ion-label>
+    <ion-datetime displayFormat="HH:mm" [(ngModel)]="horaFin"  doneText="Ok" cancelText="Cancelar"></ion-datetime>
+  </ion-item>
+</ion-col>
+</ion-row>
+
+
+<br>
+<p style="text-align: center;">Selecciona el tipo de planificación</p>
+<ion-segment mode="ios" (ionChange)="segmentChangedPlanificacion($event)" [(ngModel)]="tipoPlanificacion">
+  <ion-segment-button value="propia">
+    <ion-label>Mis planificaciones</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="aulapadel">
+    <ion-label>AulaPadel</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+
+  <ion-item *ngIf="tipoPlanificacion==='propia'">
+    <ion-label>Nivel</ion-label>
+    <ion-select placeholder="Selecciona un nivel" name="planificacion"  [(ngModel)]="planificacion"
+    (ionChange)="getSemanasPlanificacion($event)">
+
+      <ion-select-option *ngFor="let planificacion of planificaciones" [value]="planificacion"
+  >{{planificacion.nombre}}</ion-select-option>
+      
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="tipoPlanificacion==='aulapadel'">
+    <ion-label>Nivel</ion-label>
+    <ion-select placeholder="Selecciona un nivel" name="nivelPlanificacionExplora"  [(ngModel)]="nivelPlanificacionExplora"
+    (ionChange)="getSemanasPlanificacionExplora($event)">
+
+      <ion-select-option *ngFor="let nivel of nivelesPlanificacionExplora" [value]="nivel"
+  >{{nivel.titulo}}</ion-select-option>
+      
+    </ion-select>
+  </ion-item>
+
+  <ion-item *ngIf="muestraSemanas">
+    <ion-label>Semana</ion-label>
+    <ion-select placeholder="Selecciona una clase de la planificación" name="semana"  [(ngModel)]="semana"
+    (ionChange)="getSemanaSeleccionada($event)">
+
+      <ion-select-option *ngFor="let semana of semanas" [value]="semana">{{semana.nombre}}</ion-select-option>
+      
+    </ion-select>
+  </ion-item>
+  <ion-item *ngIf="muestraSemanasExplora">
+    <ion-label>Semana</ion-label>
+    <ion-select placeholder="Selecciona una clase de la planificación" name="semanaExplora"  [(ngModel)]="semanaExplora"
+    (ionChange)="getSemanaSeleccionada($event)">
+
+      <ion-select-option *ngFor="let semanaExplora of semanasExplora" [value]="semanaExplora">{{semanaExplora.titulo}}</ion-select-option>
+      
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Observaciones</ion-label>
+    <ion-textarea  [(ngModel)]="observaciones" rows="3" placeholder="escribe aquí las observaciones"></ion-textarea>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-4>
+       
+      </ion-col>
+
+      <ion-col col-4>
+        <ion-button *ngIf="perteneceConjunto" style="text-align:center" class="botonRetrasar" (click)="retrasaClases()"  shape="round">
+          Retrasar una semana
+        </ion-button>
+      </ion-col>
+
+      <ion-col col-4>
+     
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
+<ion-button class="botonCrear" (click)="actualizarClase()" expand="block" shape="round">
+  Actualizar clase
+</ion-button>

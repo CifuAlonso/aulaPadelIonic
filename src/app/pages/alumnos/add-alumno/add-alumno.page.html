@@ -1,0 +1,59 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Nuevo alumno</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input name="nombre"  [(ngModel)]="nombre" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Apellidos</ion-label>
+    <ion-input name="apellidos"  [(ngModel)]="apellidos"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Email</ion-label>
+    <ion-input name="email" type="email" [(ngModel)]="email" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Teléfono</ion-label>
+    <ion-input name="telefono" [(ngModel)]="telefono"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Nivel</ion-label>
+    <ion-select placeholder="Selecciona un nivel" name="nivel"  [(ngModel)]="nivel">
+      <ion-select-option value="1">Menores: Base</ion-select-option>
+      <ion-select-option value="2">Menores: Avanzado</ion-select-option>
+      <ion-select-option value="3">Menores: Competición</ion-select-option>
+      <ion-select-option value="4">Adultos: Iniciación</ion-select-option>
+      <ion-select-option value="5">Adultos: Intermedio</ion-select-option>
+      <ion-select-option value="6">Adultos: Competición</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Nacimiento</ion-label>
+    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="fecha"  doneText="Ok" cancelText="Cancelar"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Observaciones:</ion-label>
+      <ion-textarea  [(ngModel)]="observaciones" rows="3" placeholder="escribe aquí las observaciones"></ion-textarea>
+    </ion-item>
+
+    <ion-button class="botonCrear" (click)="guardarAlumno()" expand="block" shape="round">
+      Crear alumno
+    </ion-button>
+
+</ion-content>

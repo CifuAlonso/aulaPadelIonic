@@ -1,0 +1,90 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    
+        <ion-buttons slot="start">
+            <ion-back-button  defaultHref="main/tabs/miLugar"></ion-back-button>
+          </ion-buttons>
+         
+          <ion-buttons slot="primary">
+            <ion-button (click)="mostrarAddGrupoEjercicios()">
+              <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-title mode="ios" class="ion-text-center">Grupos de ejercicios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+    cancel-button-text="Cancelar" animated></ion-searchbar>
+  
+
+
+   
+  <ion-list lines="none">
+   
+    <ion-item-sliding>
+      <ion-item  (click)="goToEjercicios('0')" >
+        <ion-card class ="tarjetaEjercicio">
+          <ion-grid>
+            <ion-row>
+              <ion-col size="4">
+                <ion-avatar item-start> <ion-icon class="iconoGrupo" name="color-filter-outline"></ion-icon>
+                </ion-avatar>
+              </ion-col>
+              <ion-col>
+                  <p class="nombreSinGrupo">Sin grupo</p>
+                  <p class="detalles">Ejercicios que aún no están en un grupo</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+      </ion-item>
+      
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let grupo of grupoEjercicios | filter:terminoBusqueda">
+          
+          <ion-card  [ngClass]="{'animate__animated ': grupo.animaTarjeta , 'animate__jello': grupo.animaTarjeta }"
+          [ngStyle]="{'background-color':grupo.colorTarjeta}" 
+          (press)="onPress($event, grupo)"
+          (pressup)="onPressUp($event,grupo)"
+          (click)="clickTarjeta(grupo)">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-icon color="primary" name="folder-open-outline"></ion-icon>
+             </ion-col>
+             <ion-col></ion-col>
+              </ion-row>
+                <ion-row>
+                  <ion-col></ion-col>
+                  <ion-col offset="-9">
+                      <p class="nombreGrupo">{{grupo.nombre}}</p>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+          </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    </ion-item-sliding>
+
+
+
+  </ion-list>
+
+</ion-content>
+<ion-button *ngIf="seleccionaEliminar && eliminados.length===1" class="animate__animated animate__fadeIn"
+color="primary" (click)="mostrarAddGrupoEjercicios()" expand="block" shape="round">
+<ion-icon name="pencil-outline"></ion-icon>Editar grupo
+</ion-button>
+<ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn"
+color="danger" (click)="eliminarGrupo()" expand="block" shape="round">
+<ion-icon name="trash-outline"></ion-icon>Eliminar grupos
+</ion-button>

@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="!actualizaSemana">Nueva clase</ion-title>
+    <ion-title *ngIf="actualizaSemana">Clase</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content class="ion-padding">
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input name="nombre"  [(ngModel)]="nombre" required></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input name="descripcion"  [(ngModel)]="descripcion"></ion-input>
+    </ion-item>
+  
+      <ion-button *ngIf="!actualizaSemana" class="botonCrear" (click)="guardarSemana()" expand="block" shape="round">
+        Crear clase
+      </ion-button>
+      <ion-button *ngIf="actualizaSemana" class="botonCrear" (click)="actualizarSemana()" expand="block" shape="round">
+        Actualizar clase
+      </ion-button>
+      <ion-button *ngIf="actualizaSemana" class="botonEliminar" (click)="eliminarSemana()" expand="block" shape="round" color="danger">
+        Eliminar clase
+      </ion-button>
+  
+  </ion-content>
+

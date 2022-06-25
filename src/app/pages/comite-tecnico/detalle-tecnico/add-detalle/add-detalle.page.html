@@ -1,0 +1,81 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="!actualizaDetalle">Nuevo detalle técnico</ion-title>
+    <ion-title *ngIf="actualizaDetalle">Detalle técnico</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content class="ion-padding">
+
+    <ion-item>
+      <ion-label position="floating">Golpe</ion-label>
+      <ion-input name="golpe"  [(ngModel)]="golpe" required></ion-input>
+    </ion-item>
+  
+    <ion-item>
+    <ion-label  position="floating">Preparación</ion-label>
+    <ion-select placeholder="Selecciona una puntuación" name="preparacion"  [(ngModel)]="preparacion">
+      <ion-select-option value="mal">Mal</ion-select-option>
+      <ion-select-option value="regular">Regular</ion-select-option>
+      <ion-select-option value="bien">Bien</ion-select-option>
+      <ion-select-option value="muy bien">Muy bien</ion-select-option>
+      <ion-select-option value="excelente">Excelente</ion-select-option>
+
+    </ion-select>
+  </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Punto de impacto</ion-label>
+      <ion-select placeholder="Selecciona una puntuación" name="puntoImpacto"  [(ngModel)]="puntoImpacto">
+        <ion-select-option value="mal">Mal</ion-select-option>
+        <ion-select-option value="regular">Regular</ion-select-option>
+        <ion-select-option value="bien">Bien</ion-select-option>
+        <ion-select-option value="muy bien">Muy bien</ion-select-option>
+        <ion-select-option value="excelente">Excelente</ion-select-option>
+  
+      </ion-select>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Coordinación de pies</ion-label>
+      <ion-select placeholder="Selecciona una puntuación" name="coordPies"  [(ngModel)]="coordPies">
+        <ion-select-option value="mal">Mal</ion-select-option>
+        <ion-select-option value="regular">Regular</ion-select-option>
+        <ion-select-option value="bien">Bien</ion-select-option>
+        <ion-select-option value="muy bien">Muy bien</ion-select-option>
+        <ion-select-option value="excelente">Excelente</ion-select-option>
+  
+      </ion-select>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Terminación</ion-label>
+      <ion-select placeholder="Selecciona una puntuación" name="terminacion"  [(ngModel)]="terminacion">
+        <ion-select-option value="mal">Mal</ion-select-option>
+        <ion-select-option value="regular">Regular</ion-select-option>
+        <ion-select-option value="bien">Bien</ion-select-option>
+        <ion-select-option value="muy bien">Muy bien</ion-select-option>
+        <ion-select-option value="excelente">Excelente</ion-select-option>
+  
+      </ion-select>
+      </ion-item>
+  
+      <ion-button *ngIf="!actualizaDetalle" class="botonCrear" (click)="guardarDetalle()" expand="block" shape="round">
+        Crear detalle técnico
+      </ion-button>
+      <ion-button *ngIf="actualizaDetalle" class="botonCrear" (click)="actualizarDetalle()" expand="block" shape="round">
+        Actualizar detalle técnico
+      </ion-button>
+      <ion-button *ngIf="actualizaDetalle" class="botonEliminar" (click)="eliminarDetalle()" expand="block" shape="round" color="danger">
+        Eliminar detalle técnico
+      </ion-button>
+  
+  </ion-content>
+

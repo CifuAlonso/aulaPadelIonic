@@ -1,0 +1,77 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title >Añadir ejercicios</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content class="ion-padding">
+  
+    <p style="text-align: center;">Selecciona el tipo de ejercicio</p>
+<ion-segment mode="ios" (ionChange)="segmentChangedEjercicio($event)">
+  <ion-segment-button value="propio">
+    <ion-label>Mis ejercicios</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="aulapadel">
+    <ion-label>AulaPadel</ion-label>
+  </ion-segment-button>
+</ion-segment>
+
+    <ion-item>
+      <p style="text-align: center;">Selecciona la sección a la que añadir los ejercicios</p>
+      <ion-label>Sección</ion-label>
+      <ion-select placeholder="Selecciona la sección" name="seccion"  [(ngModel)]="seccion">
+        <ion-select-option value="1">Entrada en calor</ion-select-option>
+        <ion-select-option value="2">Tema principal</ion-select-option>
+        <ion-select-option value="3">Práctica del tema principal</ion-select-option>
+        <ion-select-option value="4">Vuelta a la calma</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="ion-text-center" *ngIf="guardando">
+      <ion-spinner name="bubbles" color="primary"></ion-spinner>
+    </div>
+    <div class="seleccionEjercicio" >
+      
+      <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+        cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+
+    
+
+
+      <ion-list lines="none" *ngIf="!cargando && muestraEjercicios && tipoEjercicio==='propio'">
+        <ion-item-sliding button *ngFor="let ejercicio of ejerciciosNoSemana | filter:terminoBusqueda; let i=index">
+          <ion-item>
+            <ion-checkbox  [(ngModel)]="ejercicio.check" slot="end" ></ion-checkbox>
+            <ion-card class="ion-text-center tarjetaEjercicio" >
+          <ion-card-header>
+            <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombre}}</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+
+      <ion-list lines="none" *ngIf="!cargando && muestraEjercicios && tipoEjercicio==='aulapadel'">
+        <ion-item-sliding button *ngFor="let ejercicio of ejerciciosNoSemanaExplora | filter:terminoBusqueda; let i=index">
+          <ion-item>
+            <ion-checkbox  [(ngModel)]="ejercicio.check" slot="end"></ion-checkbox>
+            <ion-card class="ion-text-center tarjetaEjercicio" >
+          <ion-card-header>
+            <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombre}}</ion-card-title>
+              </ion-card-header>
+            </ion-card>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list>
+
+    </div>
+  </ion-content>
+  <ion-button *ngIf="+seccion > 0" class="botonCrear" (click)="addEjerciciosSemana()" expand="block" shape="round">
+    Añadir ejercicios
+  </ion-button>

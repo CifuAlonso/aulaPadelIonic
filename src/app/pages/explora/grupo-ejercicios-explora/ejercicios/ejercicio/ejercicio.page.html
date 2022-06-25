@@ -1,0 +1,66 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button *ngIf="paginaAnterior === 'semanaExplora'" style="display: block;" defaultHref="/main/tabs/semana-planificacion-explora"></ion-back-button>
+      <ion-back-button *ngIf="paginaAnterior === 'ejerciciosExplora'" style="display: block;" defaultHref="/main/tabs/ejercicios-explora"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+  <div class="titulo">
+    <p class="comiteTitulo">Ejercicio </p>
+
+    <p class="nombreAlumno" *ngIf="!cargando">{{ejercicio.nombre}}</p>
+  </div>
+  <div class="seleccionDetalle" *ngIf="!cargando" >
+
+    <ion-card class="ion-text-center">
+      <ion-card-header>
+        <ion-card-title style="font-size: 100%; font-weight: 500;">Descripción</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ejercicio.descripcion}}
+      </ion-card-content>
+    </ion-card>
+    <div class="ion-text-center" *ngIf="videoGuardado">
+    <video id="videoPlayer{{ejercicioId}}" width="270" height="250" controls class="video" (play)="video()"  #videoPlayer>
+      <source src="https://web.aulapadel.com/videos/ejercicios/{{ejercicio.cod_ejercicio}}.webm" type="video/webm">
+      El buscador no soporta este vídeo
+    </video>
+  </div>
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col size="12" class="ion-text-center">
+    <ion-button class="botonCrear" (click)="goToAnimacion()"  shape="round">
+      Animacion
+    </ion-button>
+
+  </ion-col>
+
+</ion-row>
+
+<br>
+<br>
+<ion-row *ngIf="usuarioId==='3' || usuarioId==='261' || usuarioId==='452' " class="ion-align-items-center">
+  <ion-col size="12" class="ion-text-center">
+    <label>
+      <input type="file" id="file"  (change)="onSelectNewFile($event?.target)">
+      
+      Seleccionar video
+      
+      </label>
+      <br>
+<ion-button *ngIf="videoElegido" class="botonCrear" (click)="subeVideo()"  shape="round">
+subir video
+</ion-button>
+</ion-col>
+
+
+</ion-row>
+
+</ion-grid>
+  
+</div>
+
+
+</ion-content>

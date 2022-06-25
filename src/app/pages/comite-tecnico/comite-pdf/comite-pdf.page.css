@@ -1,0 +1,167 @@
+:root {
+    --background-button-color: #CED530;
+    --text-color: #121212;
+    --secondary-text-color: #B0B1B9;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  header,
+  footer {
+    text-align: center;
+    background-color: var(--background-button-color);
+  }
+  
+  header img,
+  footer {
+    padding: 12px;
+  }
+  
+  footer {
+    font-size: 14px;
+    margin-top: 30px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+  }
+  
+  main {
+    width: 100%;
+  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+    padding: 0 30px;
+  }
+  
+  h5 {
+    margin: 24px 0 12px 0;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  section {
+    margin-top: 24px;
+  }
+  
+  section:nth-child(2) {
+    padding-top: 30px;
+  }
+  
+  section:nth-child(3) {
+    padding-top: 30px;
+  }
+  
+  section:nth-child(4) {
+    padding-top: 30px;
+  }
+  
+  section > div {
+    display: flex;
+  }
+  
+  .list_index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    color: white;
+    border-radius: 8px;
+    height: 60px;
+    width: 60px;
+  
+    background: var(--background-button-color);
+  }
+  
+  .list_titles {
+    margin-left: 6px;
+    padding: 6px;
+  }
+  
+  
+  .list_titles > h2 {
+    line-height: 24px;
+    font-size: 16px;
+  }
+  
+  .list_titles > h2:nth-child(2) {
+    color: #B0B1B9;
+  }
+  
+  section > h3 {
+    text-align: center;
+    font-weight: 600;
+    padding-top: 20px;
+  }
+  
+  .entrenador {
+  font-weight: 400;
+  }
+  
+  .tabela {
+    box-shadow: 0px 0px 18px #D8D8D8;
+    margin-top: 12px;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  
+  table {
+    border: none;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0px 0px;
+  }
+  
+  tr:nth-child(even) {
+      background-color: #ECECEC;
+  }
+  
+  td {
+    border: none;
+    font-size: 16px;
+  }
+  
+  td:nth-child(1) {
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  td:nth-child(2) {
+    border-left: 1px solid hsla(0, 0%, 0%, 0.075);
+    padding: 20px;
+  }
+  
+  td:nth-child(3) {
+    border-left: 1px solid hsla(0, 0%, 0%, 0.075);
+    padding: 20px;
+  }
+  
+  td:nth-child(4) {
+    border-left: 1px solid hsla(0, 0%, 0%, 0.075);
+    padding: 20px;
+  }
+  
+  td:nth-child(5) {
+    border-left: 1px solid hsla(0, 0%, 0%, 0.075);
+    padding: 20px;
+  }
+  
+  .com_cor tr:nth-child(1) {
+    padding: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 15px;
+    background-color: #CED530;
+  }
+  
+  .com_cor td:nth-child(1) {
+    font-size: 15px;
+  }

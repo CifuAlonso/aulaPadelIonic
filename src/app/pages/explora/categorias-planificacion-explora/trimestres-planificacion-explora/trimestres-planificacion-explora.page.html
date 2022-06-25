@@ -1,0 +1,81 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="main/tabs/categorias-planificacion-explora"></ion-back-button>
+    </ion-buttons>
+         
+        
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title class="ion-text-center" *ngIf="!cargando">Trimestres</ion-title>
+
+  <ion-grid *ngIf="!cargando">
+
+    <ion-row>
+      <p class="nombreGrupo">Primer trimestre</p>
+    </ion-row>
+    <ion-row scrollX="true" class="scroll-items"> 
+      <ng-container *ngFor="let semana of semanas;let i = index">
+       <ion-col  *ngIf="semana.trimestreId===1" >
+         <ion-card class ="tarjetaEjercicio" (click)="goToSemana(semana.id)" >
+          <ion-card-header>
+            <ion-card-title>
+             Clase {{i+1}}
+            </ion-card-title>
+          </ion-card-header>
+           <ion-card-content>
+             {{semana.titulo}}
+           </ion-card-content>
+        </ion-card>
+       </ion-col>
+     </ng-container>
+      
+        </ion-row>
+
+        <ion-row>
+          <p class="nombreGrupo">Segundo trimestre</p>
+        </ion-row>
+        <ion-row scrollX="true" class="scroll-items"> 
+          <ng-container *ngFor="let semana of semanas; let i = index">
+           <ion-col  *ngIf="semana.trimestreId===2" >
+             <ion-card class ="tarjetaEjercicio"  (click)="goToSemana(semana.id)"  >
+              <ion-card-header>
+                <ion-card-title>
+                 Clase {{i+1}}
+                </ion-card-title>
+              </ion-card-header>
+               <ion-card-content>
+                 {{semana.titulo}}
+               </ion-card-content>
+            </ion-card>
+           </ion-col>
+         </ng-container>
+            </ion-row>
+
+            <ion-row>
+              <p class="nombreGrupo">Tercer trimestre</p>
+            </ion-row>
+            <ion-row scrollX="true" class="scroll-items"> 
+              <ng-container *ngFor="let semana of semanas; let i = index">
+               <ion-col  *ngIf="semana.trimestreId===3" >
+                 <ion-card class ="tarjetaEjercicio"  (click)="goToSemana(semana.id)"  >
+                   <ion-card-header>
+                     <ion-card-title>
+                      Clase {{i+1}}
+                     </ion-card-title>
+                   </ion-card-header>
+                   <ion-card-content>
+                     {{semana.titulo}}
+                   </ion-card-content>
+                </ion-card>
+               </ion-col>
+             </ng-container>
+              
+                </ion-row>
+    
+  </ion-grid>
+  
+
+</ion-content>

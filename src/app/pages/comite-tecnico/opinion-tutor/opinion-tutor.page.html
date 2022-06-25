@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/comite-tecnico"></ion-back-button>
+    </ion-buttons>
+   
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="titulo">
+    <p class="comiteTitulo"> Opinion del tutor </p>
+
+<p class="nombreAlumno"  *ngIf="!cargando">{{alumno.nombre}} {{alumno.apellidos}}</p>
+</div>
+<div class="opinion" >
+  <ion-item>
+    <ion-label position="stacked">Tutor:</ion-label>
+    <ion-textarea  [(ngModel)]="textoOpinion" rows="10" placeholder="escribe aquí la opinión"></ion-textarea>
+  </ion-item>
+  <ion-button *ngIf="!existeOpinion "class="botonGuardar" (click)="guardarOpinion()" expand="block" shape="round">
+    Guardar opinión
+  </ion-button>
+  <ion-button *ngIf="existeOpinion "class="botonGuardar" (click)="actualizarOpinion()" expand="block" shape="round">
+    Actualizar opinión
+  </ion-button>
+
+</div>
+</ion-content>

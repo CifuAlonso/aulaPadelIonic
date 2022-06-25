@@ -1,0 +1,55 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/alumno"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="mostrarAddPago()">
+        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+  <div class="titulo">
+    <p class="comiteTitulo"> Pagos </p>
+
+<p class="nombreAlumno"*ngIf="!cargando">{{alumno.nombre}} {{alumno.apellidos}}</p>
+</div>
+<div class="seleccionPago">
+<ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+
+<ion-list lines="none" *ngIf="!cargando">
+<ion-item-sliding button *ngFor="let pago of pagos | filter:terminoBusqueda; let i = index">
+
+
+
+  <ion-item (click)="abrePopOver($event,pago)" >
+    <ion-card class="ion-text-center tarjetaPago"
+    [ngClass]="{'animate__animated ': pago.animaTarjeta , 'animate__jello': pago.animaTarjeta }"
+    [ngStyle]="{'background-color':pago.colorTarjeta}" (press)="onPress($event, pago)"
+    (pressup)="onPressUp($event,pago)" (click)="clickTarjeta(pago)">
+      <ion-card-header>
+        <ion-card-title style="font-size: 100%; font-weight: 500;">{{pago.fecha}}</ion-card-title>
+        <ion-card-subtitle>{{pago.cantidad}} {{pago.moneda}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ion-item>
+ 
+
+</ion-item-sliding>
+</ion-list>
+</div>
+
+</ion-content>
+<div class="fondoBoton">
+  <ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn"
+  color="primary" (click)="enviaPdf()" expand="block" shape="round">
+  <ion-icon name="send-outline"></ion-icon>Enviar pagos
+  </ion-button>
+  <ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn"
+  color="danger" (click)="eliminarPago()" expand="block" shape="round">
+  <ion-icon name="trash-outline"></ion-icon>Eliminar pagos
+  </ion-button>
+  </div>

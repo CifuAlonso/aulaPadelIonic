@@ -1,0 +1,35 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button  defaultHref="main/tabs/explora"></ion-back-button>
+    </ion-buttons>
+         
+    <ion-title mode="ios" class="ion-text-center">Categorías</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+   <ion-grid>
+     <ion-row *ngFor="let categoria of categoriasPlanificacion">
+      <p class="nombreGrupo">{{categoria.titulo}}</p>
+      <ion-row scrollX="true" class="scroll-items"> 
+     <ng-container *ngFor="let nivel of nivelesPlanificacion">
+      <ion-col sizeLg="4" sizeMd="4" sizeXs="5" *ngIf="nivel.categoriaId===categoria.id" >
+        <ion-card class ="tarjetaEjercicio" (click)="goToTrimestres(nivel.id)" >
+          
+          <img src="assets/images/tarjetasVideoLibro/{{nivel.id}}.jpg" />
+        
+          <ion-card-content>
+            <p class="ion-text-center">{{nivel.titulo}}</p>
+          </ion-card-content>
+       </ion-card>
+      </ion-col>
+    </ng-container>
+     
+       </ion-row>
+     </ion-row>
+   </ion-grid>
+
+</ion-content>

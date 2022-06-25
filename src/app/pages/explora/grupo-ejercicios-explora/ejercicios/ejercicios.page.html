@@ -1,0 +1,281 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/explora"></ion-back-button>
+    </ion-buttons>
+   
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="titulo">
+    <p class="comiteTitulo"> Ejercicios </p>
+<!--
+    <p class="nombreAlumno" *ngIf="!cargando">{{nombreGrupoEjercicios}}</p>
+ -->
+  </div>
+
+  <div class="seleccionEjercicio" *ngIf ="!cargando">
+    <ion-slides [pager]="9">
+      <ion-slide>
+        <ion-card  class="ion-text-center tarjetaEjercicio">     
+          <ion-card-header>
+            <ion-card-title style=" font-size: 100%; font-weight: 500;">Entrada en calor
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+            cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+            <ion-list lines="none" *ngIf="!cargando">
+              <ion-item-sliding button *ngFor="let ejercicio of entradaEnCalor | filter:terminoBusqueda; let i=index">
+                <ion-item (click)="goToEjercicio(ejercicio.id )">
+                  <ion-card class="ion-text-center tarjetaEjercicio"
+                  [ngStyle]="{'background-color':ejercicio.colorTarjeta}" >
+                <ion-card-header>
+                  <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombre}}</ion-card-title>
+                    </ion-card-header>
+                  </ion-card>
+                </ion-item>
+          
+           
+              </ion-item-sliding>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+    
+      </ion-slide>
+      <ion-slide>
+        <ion-card  class="ion-text-center tarjetaEjercicio">     
+          <ion-card-header>
+            <ion-card-title style=" font-size: 100%; font-weight: 500;">Progresiones
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+            cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+            <ion-list lines="none" *ngIf="!cargando">
+              <ion-item-sliding button *ngFor="let ejercicio of progresiones | filter:terminoBusqueda; let i=index">
+                <ion-item (click)="goToEjercicio(ejercicio.id )">
+                  <ion-card class="ion-text-center tarjetaEjercicio"
+                  [ngStyle]="{'background-color':ejercicio.colorTarjeta}" >
+                <ion-card-header>
+                  <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombre}}</ion-card-title>
+                    </ion-card-header>
+                  </ion-card>
+                </ion-item>
+          
+           
+              </ion-item-sliding>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+    
+      </ion-slide>
+
+      <ion-slide>
+        <ion-card  class="ion-text-center tarjetaEjercicio">     
+          <ion-card-header>
+            <ion-card-title style=" font-size: 100%; font-weight: 500;">Controles
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+            cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+            <ion-list lines="none" *ngIf="!cargando">
+              <ion-item-sliding button *ngFor="let ejercicio of controles | filter:terminoBusqueda; let i=index">
+                <ion-item (click)="goToEjercicio(ejercicio.id )">
+                  <ion-card class="ion-text-center tarjetaEjercicio"
+                  [ngStyle]="{'background-color':ejercicio.colorTarjeta}" >
+                <ion-card-header>
+                  <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombre}}</ion-card-title>
+                    </ion-card-header>
+                  </ion-card>
+                </ion-item>
+          
+           
+              </ion-item-sliding>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+    
+      </ion-slide>
+
+      <ion-slide>
+        <ion-card  class="ion-text-center tarjetaEjercicio">     
+          <ion-card-header>
+            <ion-card-title style=" font-size: 100%; font-weight: 500;">Carros
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+            cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+            <ion-list lines="none" *ngIf="!cargando">
+              <ion-item-sliding button *ngFor="let ejercicio of carros | filter:terminoBusqueda; let i=index">
+                <ion-item (click)="goToEjercicio(ejercicio.id )">
+                  <ion-card class="ion-text-center tarjetaEjercicio"
+                  [ngStyle]="{'background-color':ejercicio.colorTarjeta}" >
+                <ion-card-header>
+                  <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombre}}</ion-card-title>
+                    </ion-card-header>
+                  </ion-card>
+                </ion-item>
+          
+           
+              </ion-item-sliding>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+    
+      </ion-slide>
+
+      <ion-slide>
+        <ion-card  class="ion-text-center tarjetaEjercicio">     
+          <ion-card-header>
+            <ion-card-title style=" font-size: 100%; font-weight: 500;">Bola viva
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+            cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+            <ion-list lines="none" *ngIf="!cargando">
+              <ion-item-sliding button *ngFor="let ejercicio of bolaViva | filter:terminoBusqueda; let i=index">
+                <ion-item (click)="goToEjercicio(ejercicio.id )">
+                  <ion-card class="ion-text-center tarjetaEjercicio"
+                  [ngStyle]="{'background-color':ejercicio.colorTarjeta}" >
+                <ion-card-header>
+                  <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombre}}</ion-card-title>
+                    </ion-card-header>
+                  </ion-card>
+                </ion-item>
+          
+           
+              </ion-item-sliding>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+    
+      </ion-slide>
+
+      <ion-slide>
+        <ion-card  class="ion-text-center tarjetaEjercicio">     
+          <ion-card-header>
+            <ion-card-title style=" font-size: 100%; font-weight: 500;">Juegos
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+            cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+            <ion-list lines="none" *ngIf="!cargando">
+              <ion-item-sliding button *ngFor="let ejercicio of juegos | filter:terminoBusqueda; let i=index">
+                <ion-item (click)="goToEjercicio(ejercicio.id )">
+                  <ion-card class="ion-text-center tarjetaEjercicio"
+                  [ngStyle]="{'background-color':ejercicio.colorTarjeta}" >
+                <ion-card-header>
+                  <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombre}}</ion-card-title>
+                    </ion-card-header>
+                  </ion-card>
+                </ion-item>
+          
+           
+              </ion-item-sliding>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+    
+      </ion-slide>
+
+      <ion-slide>
+        <ion-card  class="ion-text-center tarjetaEjercicio">     
+          <ion-card-header>
+            <ion-card-title style=" font-size: 100%; font-weight: 500;">Partidos
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+            cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+            <ion-list lines="none" *ngIf="!cargando">
+              <ion-item-sliding button *ngFor="let ejercicio of partidos | filter:terminoBusqueda; let i=index">
+                <ion-item (click)="goToEjercicio(ejercicio.id )">
+                  <ion-card class="ion-text-center tarjetaEjercicio"
+                  [ngStyle]="{'background-color':ejercicio.colorTarjeta}" >
+                <ion-card-header>
+                  <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombre}}</ion-card-title>
+                    </ion-card-header>
+                  </ion-card>
+                </ion-item>
+          
+           
+              </ion-item-sliding>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+    
+      </ion-slide>
+
+      <ion-slide>
+        <ion-card  class="ion-text-center tarjetaEjercicio">     
+          <ion-card-header>
+            <ion-card-title style=" font-size: 100%; font-weight: 500;">Explicaciones
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+            cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+            <ion-list lines="none" *ngIf="!cargando">
+              <ion-item-sliding button *ngFor="let ejercicio of explicaciones | filter:terminoBusqueda; let i=index">
+                <ion-item (click)="goToEjercicio(ejercicio.id )">
+                  <ion-card class="ion-text-center tarjetaEjercicio"
+                  [ngStyle]="{'background-color':ejercicio.colorTarjeta}" >
+                <ion-card-header>
+                  <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombre}}</ion-card-title>
+                    </ion-card-header>
+                  </ion-card>
+                </ion-item>
+          
+           
+              </ion-item-sliding>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+    
+      </ion-slide>
+
+      <ion-slide>
+        <ion-card  class="ion-text-center tarjetaEjercicio">     
+          <ion-card-header>
+            <ion-card-title style=" font-size: 100%; font-weight: 500;">Detalles
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+            cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+            <ion-list lines="none" *ngIf="!cargando">
+              <ion-item-sliding button *ngFor="let ejercicio of detalles | filter:terminoBusqueda; let i=index">
+                <ion-item (click)="goToEjercicio(ejercicio.id )">
+                  <ion-card class="ion-text-center tarjetaEjercicio"
+                  [ngStyle]="{'background-color':ejercicio.colorTarjeta}" >
+                <ion-card-header>
+                  <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombre}}</ion-card-title>
+                    </ion-card-header>
+                  </ion-card>
+                </ion-item>
+          
+           
+              </ion-item-sliding>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+    
+      </ion-slide>
+      </ion-slides>
+ 
+  </div>
+
+
+</ion-content>
+
+<ion-content *ngIf="cargando">
+  <div class="ion-text-center">
+    <ion-spinner name="bubbles" color="primary"></ion-spinner>
+  </div>
+</ion-content>

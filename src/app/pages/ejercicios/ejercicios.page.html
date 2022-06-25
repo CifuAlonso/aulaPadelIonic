@@ -1,0 +1,69 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/grupo-ejercicios"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button *ngIf="idGrupoEjercicios != '0'" (click)="mostrarAddEjerciciosAGrupo()">
+        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="titulo">
+    <p class="comiteTitulo"> Ejercicios </p>
+
+    <p class="nombreAlumno" *ngIf="!cargando">{{nombreGrupoEjercicios}}</p>
+ 
+  </div>
+  <div class="seleccionEjercicio" >
+  <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+    cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+
+    <ion-grid *ngIf="!cargando">
+      <ion-row>
+        <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let ejercicio of ejercicios | filter:terminoBusqueda"
+          #planificacionesAnimacion>
+          <ion-card
+            [ngClass]="{'animate__animated ': ejercicio.animaTarjeta , 'animate__jello': ejercicio.animaTarjeta }"
+            [ngStyle]="{'background-color':ejercicio.colorTarjeta}" (press)="onPress($event, ejercicio)"
+            (pressup)="onPressUp($event,ejercicio)" (click)="clickTarjeta(ejercicio)">
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-icon color="primary" name="tennisball-outline"></ion-icon>
+                </ion-col>
+                <ion-col></ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col offset="-9">
+                  <p class="nombrePlanificacion">{{ejercicio.nombre}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+
+
+
+        </ion-col>
+      </ion-row>
+
+
+    </ion-grid>
+
+</div>
+
+</ion-content>
+<div class="fondoBotones">
+  <ion-button *ngIf="seleccionaEliminar && eliminados.length===1" class="animate__animated animate__fadeIn"
+    color="primary" (click)="mostrarAddEjercicio()" expand="block" shape="round">
+    <ion-icon name="pencil-outline"></ion-icon>Editar ejercicio
+  </ion-button>
+  <ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn" color="danger"
+    (click)="eliminarEjercicio()" expand="block" shape="round">
+    <ion-icon name="trash-outline"></ion-icon>Eliminar ejercicio
+  </ion-button>
+  </div>

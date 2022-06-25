@@ -1,0 +1,89 @@
+<ion-header class="ion-no-border" *ngIf="!cargando">
+  <ion-toolbar>
+
+    <ion-icon class="notificacion" slot="start" name="notifications"></ion-icon>
+
+    <ion-buttons slot="primary">
+      <ion-button (click)="goToUsuario()" >
+        <ion-avatar item-start slot="end"> 
+          <img *ngIf="!existeAvatar" src="{{'/assets/avatares/0.jpg'}}">
+        <img *ngIf="existeAvatar && !cargando" src={{avatar}}>
+        </ion-avatar>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="!cargando">
+  
+  <ion-text class="saludo">
+    Hola, {{usuario.nombre}}
+  </ion-text>
+  <br>
+  <ion-text class="hora" *ngIf="horaActual > 6 && horaActual < 15">
+    Buenos días
+  </ion-text>
+  <ion-text class="hora" *ngIf="horaActual > 14 && horaActual < 21">
+    Buenas tardes
+  </ion-text>
+  <ion-text class="hora" *ngIf="horaActual > 20 && horaActual < 7">
+    Buenas noches
+  </ion-text>
+  <ion-list mode="ios" lines="none">
+    <ion-item>
+
+      <!--  <img *ngIf="survey.icon" width="35" src="{{survey.icon}}"/> -->
+      <ion-card class="cartaIcono" (click)="goToCalendario()">
+        <ion-card-content>
+          <ion-icon name="calendar-outline"></ion-icon>
+        </ion-card-content>
+      </ion-card>
+
+      <div class="tituloListado" (click)="goToCalendario()" >
+        <h3>Calendario
+          <p>Accede al calendario y eventos</p>
+        </h3>
+      </div>
+    </ion-item>
+    <ion-item>
+
+      <!--  <img *ngIf="survey.icon" width="35" src="{{survey.icon}}"/> -->
+      <ion-card class="cartaIcono" (click)="goToClases()">
+        <ion-card-content>
+          <ion-icon name="clipboard-outline"></ion-icon>
+        </ion-card-content>
+      </ion-card>
+
+      <div class="tituloListado" (click)="goToClases()">
+        <h3>Clases de hoy
+        <p>Tus horarios para hoy</p>
+      </h3>
+      </div>
+    </ion-item>
+    <ion-item>
+
+      <!--  <img *ngIf="survey.icon" width="35" src="{{survey.icon}}"/> -->
+      <ion-card *ngIf="usuario.tipo===2" class="cartaIcono" (click)="goToAlumnos()">
+        <ion-card-content>
+          <ion-icon name="people"></ion-icon>
+        </ion-card-content>
+      </ion-card>
+      <div  *ngIf="usuario.tipo===2"  class="tituloListado" (click)="goToAlumnos()" >
+        <h3>Mis alumnos
+        <p>Accede al listado de tus alumnos</p>
+      </h3>
+      </div>
+
+      <ion-card *ngIf="usuario.tipo===3" class="cartaIcono" (click)="goToProfesores()">
+        <ion-card-content>
+          <ion-icon name="people"></ion-icon>
+        </ion-card-content>
+      </ion-card>
+      <div *ngIf="usuario.tipo===3" class="tituloListado" (click)="goToProfesores()" >
+        <h3>Mis profesores
+        <p>Accede al listado de tus profesores</p>
+      </h3>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

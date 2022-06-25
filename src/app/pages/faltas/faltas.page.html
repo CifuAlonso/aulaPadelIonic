@@ -1,0 +1,52 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/alumno"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="mostrarAddFalta()">
+        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="titulo">
+    <p class="comiteTitulo"> Ausencias </p>
+
+<p class="nombreAlumno"  *ngIf="!cargando">{{alumno.nombre}} {{alumno.apellidos}}</p>
+</div>
+<div class="seleccionAusencia" >
+<ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+
+<ion-list lines="none"  *ngIf="!cargando">
+<ion-item-sliding button *ngFor="let falta of faltas | filter:terminoBusqueda; let i = index">
+  <ion-item (click)="abrePopOver($event,falta)">
+    <ion-card class="ion-text-center tarjetaFalta"
+    [ngClass]="{'animate__animated ': falta.animaTarjeta , 'animate__jello': falta.animaTarjeta }"
+    [ngStyle]="{'background-color':falta.colorTarjeta}" (press)="onPress($event, falta)"
+    (pressup)="onPressUp($event,falta)" (click)="clickTarjeta(falta)">
+      <ion-card-header>
+        <ion-card-title style="font-size: 100%; font-weight: 500;">{{falta.motivo}}</ion-card-title>
+        <ion-card-subtitle>{{falta.fecha}}</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card>
+  </ion-item>
+ 
+
+</ion-item-sliding>
+</ion-list>
+  
+</div>
+</ion-content>
+<div class="fondoBoton">
+  <ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn"
+  color="primary" (click)="enviaPdf()" expand="block" shape="round">
+  <ion-icon name="send-outline"></ion-icon>Enviar ausencias
+  </ion-button>
+  <ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn"
+  color="danger" (click)="eliminarFalta()" expand="block" shape="round">
+  <ion-icon name="trash-outline"></ion-icon>Eliminar ausencias
+  </ion-button>
+  </div>

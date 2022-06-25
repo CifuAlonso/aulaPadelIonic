@@ -1,0 +1,27 @@
+.tarjetaAlumno{
+    width: 100%;
+}
+
+.item{
+    margin:1px auto;
+  }
+
+  .nombreAlumno{
+      margin-top: 2%;
+      font-weight: bold;
+  }
+ .correo{
+     font-size: smaller;
+ }
+
+ ion-title{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    color: #3e4208;
+}
+
+
+ion-spinner{
+    margin-top: 50%;
+    zoom:300%
+}

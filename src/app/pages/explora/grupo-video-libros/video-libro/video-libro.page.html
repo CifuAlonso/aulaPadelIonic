@@ -1,0 +1,93 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="paraVideo()"  defaultHref="main/tabs/grupo-video-libros"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="cambiaVista()" >
+        <p *ngIf="!verConsejos"> Mostrar consejos</p>
+        <p *ngIf="verConsejos"> Mostrar videoLibro</p>
+
+      </ion-button>
+    </ion-buttons>
+        
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!cargando">
+  <ion-title class="ion-text-center" *ngIf="!verConsejos">Videolibro </ion-title>
+  <ion-title class="ion-text-center" *ngIf="verConsejos">Consejos </ion-title>
+  <p class="ion-text-center">{{tituloVideoLibro}}</p>
+   
+  <ion-list lines="none" *ngIf="!verConsejos">
+
+    <ion-item-sliding button *ngFor="let videoLibro of videoLibros">
+      <ion-item  (click)="reproduceVideo()" >
+        <ion-card class ="tarjetaEjercicio">
+        
+          <video id="videoPlayer{{videoLibro.id}}" width="400" height="300" controls class="video" (play)="video()" poster="{{videoLibro.url}}" #videoPlayer>
+            <source src="{{videoLibro.url}}" type="video/mp4">
+            El buscador no soporta este vídeo
+          </video>
+          <ion-card-header>
+            <ion-card-title class="ion-text-center">
+              {{videoLibro.titulo}}
+            </ion-card-title>
+          </ion-card-header>
+     
+        <ion-card-content>
+                
+                  <p class="detalles ion-text-center">{{videoLibro.descripcionEs}}</p>
+                </ion-card-content>
+        </ion-card>
+
+      </ion-item>
+   
+
+    </ion-item-sliding>
+
+
+  </ion-list>
+
+  <ion-list lines="none" *ngIf="verConsejos">
+
+    <ion-item-sliding button *ngFor="let videoLibro of consejos">
+      <ion-item  (click)="reproduceVideo()" >
+        <ion-card class ="tarjetaEjercicio">
+        
+          <video width="400" height="300" controls class="video" (play)="video()" poster="{{videoLibro.url}}" #videoPlayer>
+            <source src="{{videoLibro.url}}" type="video/mp4">
+            El buscador no soporta este vídeo
+          </video>
+          <ion-card-header>
+            <ion-card-title class="ion-text-center">
+              {{videoLibro.titulo}}
+            </ion-card-title>
+          </ion-card-header>
+     
+        <ion-card-content>
+                
+                  <p class="detalles ion-text-center">{{videoLibro.descripcionEs}}</p>
+                </ion-card-content>
+        </ion-card>
+
+      </ion-item>
+   
+
+    </ion-item-sliding>
+
+
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="siguientes($event)">
+    <ion-infinite-scroll-content 
+      loadingSpinner="bubbles"
+      color="primary">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <!--
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="siguientes($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+-->
+</ion-content>

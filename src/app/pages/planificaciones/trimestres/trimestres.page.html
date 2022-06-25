@@ -1,0 +1,73 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/planificaciones"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button (click)="mostrarAddTrimestre()">
+        <ion-icon slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+  <div class="titulo">
+    <p class="comiteTitulo"> Trimestres </p>
+
+    <p class="nombreAlumno" *ngIf="!cargando">{{planificacion.nombre}}</p>
+  </div>
+  <div class="seleccionDetalle" >
+  <ion-searchbar placeholder="Buscar" [(ngModel)]="terminoBusqueda" showCancelButton="focus"
+    cancel-button-text="Cancelar" animated #triggerElement></ion-searchbar>
+<!--
+  <ion-list lines="none" *ngIf="!cargando">
+    <ion-item-sliding button *ngFor="let trimestre of trimestres | filter:terminoBusqueda; let i=index">
+      <ion-item>
+      -->
+      <ion-grid>
+        <ion-row>
+          <ion-col sizeLg="4" sizeMd="4" sizeXs="6" *ngFor="let trimestre of trimestres | filter:terminoBusqueda" 
+             #planificacionesAnimacion>
+            
+        <ion-card 
+        [ngClass]="{'animate__animated ': trimestre.animaTarjeta , 'animate__jello': trimestre.animaTarjeta }"
+        [ngStyle]="{'background-color':trimestre.colorTarjeta}" 
+        (press)="onPress($event, trimestre)"
+        (pressup)="onPressUp($event,trimestre)"
+        (click)="clickTarjeta(trimestre)" >
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-icon color="primary" name="calendar-number-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombrePlanificacion">{{trimestre.nombre}}</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+     
+      </ion-col>
+    </ion-row>
+  
+
+  </ion-grid>
+</div>
+
+</ion-content>
+<div class="fondoBotones">
+<ion-button *ngIf="seleccionaEliminar && eliminados.length===1" class="animate__animated animate__fadeIn"
+color="primary" (click)="mostrarAddTrimestre()" expand="block" shape="round">
+<ion-icon name="pencil-outline"></ion-icon>Editar trimestre
+</ion-button>
+<ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn"
+color="danger" (click)="eliminarTrimestre()" expand="block" shape="round">
+<ion-icon name="trash-outline"></ion-icon>Eliminar trimestres
+</ion-button>
+</div>

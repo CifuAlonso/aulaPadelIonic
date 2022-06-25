@@ -1,0 +1,181 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/main/tabs/home"></ion-back-button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!cargando">
+  <ion-card color="light" class="tarjetaPerfil">
+    <div class="img-wrapper">
+      <ion-avatar (click)="cambiaAvatar($event)"> 
+        <img *ngIf="!existeAvatar" src="{{'/assets/avatares/0.jpg'}}">
+        <img *ngIf="existeAvatar !cargando" src={{avatar}}>
+      </ion-avatar>
+      <ion-fab horizontal="end"  edge>
+        <ion-fab-button size="small" class="botonFoto" (click)="cambiaAvatar($event)">
+          <ion-icon name="camera-outline"></ion-icon>
+        </ion-fab-button>   
+      </ion-fab>
+     
+    </div>
+    <ion-icon slot="icon-only" name="ellipsis-vertical-outline" color="primary" ></ion-icon>
+    <ion-card-content class="ion-text-center">
+      <h2>{{usuario.nombre}} {{usuario.apellidos}}</h2>
+      <br>
+      <ion-text color="medium">
+        <div *ngIf="usuario.telefono != (null || '' || undefined)  " style="display: flex;" class="ion-justify-content-center">
+          <ion-icon name="call-outline" color="medium">
+          </ion-icon>
+          <p>&nbsp;{{usuario.telefono}}</p>
+        </div>
+        <div *ngIf="usuario.nacimiento != (null || '' || undefined)" style="display: flex;" class="ion-justify-content-center">
+          <ion-icon name="calendar-outline" color="medium">
+          </ion-icon>
+          <p>&nbsp;{{usuario.nacimiento}}</p>
+        </div>
+        <div *ngIf="usuario.email != (null || '' || undefined)" style="display: flex;" class="ion-justify-content-center">
+          <ion-icon name="mail-outline" color="medium">
+          </ion-icon>
+          <p>&nbsp;{{usuario.email}}</p>
+        </div>
+      </ion-text>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+
+          <ion-card class ="tarjetaAlumno" (click)="goToEditarUsuario()">
+            <ion-grid>
+            <ion-row>
+              <ion-col >
+                <ion-icon class ="iconoTarjeta" name="create-outline"></ion-icon>
+          
+           </ion-col>
+           <ion-col></ion-col>
+            </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col  offset="-9">
+  
+                    <p class="nombreTarjeta">Editar datos</p>
+                 
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+
+      </ion-col>
+
+      <ion-col>
+
+      
+        <ion-card class ="tarjetaAlumno" (click)="goToNotificacionesUsuario()">
+          <ion-grid>
+          <ion-row>
+            <ion-col >
+              <ion-icon class ="iconoTarjeta" name="notifications-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Notificaciones</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+
+      </ion-col>
+    
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class ="tarjetaAlumno" (click)="goToLicenciaUsuario()">
+          <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-icon class ="iconoTarjeta" name="logo-euro"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Licencia</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class ="tarjetaAlumno" (click)="cambiaIdioma($event)">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-icon class ="iconoTarjeta" name="language-outline"></ion-icon>
+           </ion-col>
+           <ion-col></ion-col>
+            </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col offset="-9">
+                    <p class="nombreTarjeta">Idioma</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col>
+        <ion-card class ="tarjetaAlumno" (click)="goToInformacion()" >
+          <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-icon  class ="iconoTarjeta" name="information-outline"></ion-icon>
+         </ion-col>
+         <ion-col></ion-col>
+          </ion-row>
+            <ion-row>
+              <ion-col></ion-col>
+              <ion-col offset="-9">
+                  <p class="nombreTarjeta">Información</p>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card class ="tarjetaAlumno" (click)="logout()">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-icon class ="iconoTarjeta" name="log-out-outline"></ion-icon>
+           </ion-col>
+           <ion-col></ion-col>
+            </ion-row>
+              <ion-row>
+                <ion-col></ion-col>
+                <ion-col offset="-9">
+                    <p class="nombreTarjeta">Cerrar sesión</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+
+</ion-content>

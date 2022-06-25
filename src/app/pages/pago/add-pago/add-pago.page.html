@@ -1,0 +1,56 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="!actualizaPago">Nuevo pago</ion-title>
+    <ion-title *ngIf="actualizaPago">Pago</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content class="ion-padding">
+
+    <ion-item>
+      <ion-label position="floating">Cantidad</ion-label>
+      <ion-input name="cantidad"  [(ngModel)]="cantidad" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Moneda</ion-label>
+      <ion-select placeholder="Selecciona moneda" name="moneda"  [(ngModel)]="moneda">
+        <ion-select-option value="€">€</ion-select-option>
+        <ion-select-option value="$">$</ion-select-option>
+        <ion-select-option value="£">£</ion-select-option>
+      </ion-select>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Fecha</ion-label>
+      <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="fecha"  doneText="Ok" cancelText="Cancelar"></ion-datetime>
+    </ion-item>
+
+    
+    <ion-item>
+      <ion-label position="floating">Observaciones</ion-label>
+      <ion-input name="observaciones"  [(ngModel)]="observaciones"></ion-input>
+    </ion-item>
+  
+  
+  
+  
+      <ion-button *ngIf="!actualizaPago" class="botonCrear" (click)="guardarPago()" expand="block" shape="round">
+        Crear pago
+      </ion-button>
+      <ion-button *ngIf="actualizaPago" class="botonCrear" (click)="actualizarPago()" expand="block" shape="round">
+        Actualizar pago
+      </ion-button>
+      <ion-button *ngIf="actualizaPago" class="botonEliminar" (click)="eliminarPago()" expand="block" shape="round" color="danger">
+        Eliminar pago
+      </ion-button>
+  
+  </ion-content>
+

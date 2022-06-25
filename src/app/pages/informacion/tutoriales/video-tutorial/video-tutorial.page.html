@@ -1,0 +1,19 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title >Tutorial</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="ion-text-center">
+  <video id="videoPlayer{{nombre}}" width="270" height="250" controls class="video"  #videoPlayer>
+    <source src="https://web.aulapadel.com/videos/tutoriales/{{nombre}}.mp4" type="video/mp4">
+    El buscador no soporta este vídeo
+  </video>
+  </div>
+</ion-content>

@@ -1,0 +1,57 @@
+ion-icon{
+    zoom: 150%;
+    color: #a0a537;
+}
+
+ion-card-content{
+    align-items: center;
+}
+
+ion-item{
+    margin-bottom: -5%;
+}
+
+.notificacion{
+    margin-left: 5%;
+}
+
+.fotoPerfil{
+    margin-right: 5%;
+}
+
+.saludo{
+    display: inline-block;
+    margin-top: 10%;
+    margin-left: 10%;
+    
+    //font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    font-size: 120%;
+}
+.hora{
+    display: inline-block;
+    margin-top: -3%;
+    margin-left: 10%;
+    margin-bottom: 10%;
+    //font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    font-size: 150%;
+}
+
+.tituloListado h3{
+    font-size: larger;
+    
+}
+.tituloListado p{
+    margin-top: 3%;
+    font-size:55%;
+    color: rgb(124, 139, 139);
+    
+}
+.cartaIcono{
+    width: 60px !important ;
+    height: 50%;
+    
+}
+
+ion-avatar{
+    zoom: 50%;
+}

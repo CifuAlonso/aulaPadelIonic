@@ -1,0 +1,7 @@
+{
+  "name": "appAulaPadel",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

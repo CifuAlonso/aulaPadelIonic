@@ -1,0 +1,109 @@
+
+
+.titulo{
+    text-align: center;
+    margin-bottom: 10%;
+}
+.comiteTitulo{
+    font-weight: bolder;
+}
+
+.alumnosClaseTitulo{
+    margin-left: 5%;
+    margin-top: -3%;
+    margin-bottom: -2%;
+}
+
+.grupoTitulo{
+    margin-left: 5%;
+    
+   
+}
+
+.scroll-items {
+    justify-content: flex-start; // changed
+    flex-wrap: nowrap;
+    overflow-x: scroll !important;
+    overflow-y: hidden;
+  }
+  .scroll-items ion-col { // added
+      display: flex;
+      flex-wrap: nowrap;
+  }
+
+  .botonEliminar{
+    
+    zoom: 60%;
+  }
+
+  .botonAddAlumno {
+      margin-top: 20%;
+      margin-left: 20%;
+     --background: #9fa5374d;
+    .fab { display: inline-block !important}
+  }
+
+  .botonAsistencia{
+    --background: #9fa5374d;
+    margin-top: -5%;
+    margin-bottom: 5%;
+
+  }
+.item{
+    margin:1px auto;
+  }
+
+  :host{
+    background-color: #9fa5374d;
+    --offset-top:200px;
+}
+
+ion-toolbar{
+    --background: transparent;
+}
+
+
+ion-card{
+    margin-bottom: 5%;
+}
+
+
+ion-content {
+    --background: transparent;
+
+    transform: translate3d(0,0,0);
+    transition: 0.5s;
+    
+}
+
+ion-grid{
+    margin-top: 5%;
+}
+
+.seleccionDetalle {
+    background-color: #fff;
+    height: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    padding-top: 20px;
+    overflow: scroll;
+    padding-bottom: 20px;
+}
+
+.no-transform{
+    transform: translate3d(0,0,0) !important;
+}
+
+.tarjetaEjercicio img {
+    object-fit: contain;
+    
+  }
+
+  .asistenciaNombre{
+      margin-right: 5%;
+  }
+
+  ion-spinner{
+      margin-top: 50%;
+      zoom:300%
+  }

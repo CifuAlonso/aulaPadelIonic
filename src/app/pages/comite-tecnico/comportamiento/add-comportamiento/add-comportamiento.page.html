@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="!actualizaComportamiento">Nuevo comportamiento</ion-title>
+    <ion-title *ngIf="actualizaComportamiento">Comportamiento</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-content class="ion-padding">
+
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input name="nombre"  [(ngModel)]="nombre" required></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label position="floating">Observaciones</ion-label>
+      <ion-input name="observaciones"  [(ngModel)]="observaciones"></ion-input>
+    </ion-item>
+  
+      <ion-button *ngIf="!actualizaComportamiento" class="botonCrear" (click)="guardarComportamiento()" expand="block" shape="round">
+        Crear comportamiento
+      </ion-button>
+      <ion-button *ngIf="actualizaComportamiento" class="botonCrear" (click)="actualizarComportamiento()" expand="block" shape="round">
+        Actualizar comportamiento
+      </ion-button>
+      <ion-button *ngIf="actualizaComportamiento" class="botonEliminar" (click)="eliminarComportamiento()" expand="block" shape="round" color="danger">
+        Eliminar comportamiento
+      </ion-button>
+  
+  </ion-content>
+

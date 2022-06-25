@@ -1,0 +1,82 @@
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+  
+    <ion-buttons slot="start">
+      <ion-back-button style="display: block;" (click)="goToAnterior()"></ion-back-button>
+      </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="titulo">
+    <p class="comiteTitulo"> Ejercicios </p>
+
+    <p class="nombreAlumno" *ngIf="!cargando">{{nombreSemana}}</p>
+
+  </div>
+  <div class="seleccionEjercicio" *ngIf ="!cargando">
+    <ion-slides [pager]="secciones.length > 1">
+      <ion-slide *ngFor="let seccion of secciones">
+        <ion-card  class="ion-text-center tarjetaEjercicio" *ngIf="seccion.subsecciones.length > 0">
+          <ion-card-header>
+            <ion-card-title style=" font-size: 100%; font-weight: 500;">{{seccion.nombre}}
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <div *ngFor="let subseccion of subsecciones">
+              <div class="accordion-container" *ngIf="subseccion.seccionId === seccion.id"  [ngClass]="subseccion.acordeonAbierto ? 'open' : ''">
+                <ion-card-header (click)="toggleAccordion(subseccion)">
+                 <h1>
+                  {{subseccion.nombre}}
+                   <div class="arrow"></div>
+                 </h1>
+               </ion-card-header>
+               <ion-card-content>
+                 <div class="content">
+                  <ion-card *ngFor="let ejercicio of subseccion.ejercicios"  class="ion-text-center tarjetaEjercicio">
+                    <ion-card-header>
+                      <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombreEjercicio}}
+                      </ion-card-title>
+                    </ion-card-header>
+                  </ion-card>
+                 </div>
+               </ion-card-content>
+               </div>
+        
+            </div>
+          </ion-card-content>
+        </ion-card>
+    
+      </ion-slide>
+      </ion-slides>
+ 
+  </div>
+  <!--
+ 
+
+            <ion-list slot="content" lines="none">
+       
+                <ion-item-sliding button *ngFor="let ejercicio of ejerciciosTotales">
+
+                  <ion-item (click)="goToEjercicio(ejercicio.ejercicioId )">
+                    <ion-card class="ion-text-center tarjetaEjercicio">
+                      <ion-card-header>
+                        <ion-card-title style=" font-size: 100%; font-weight: 500;">{{ejercicio.nombreEjercicio}}
+                        </ion-card-title>
+                      </ion-card-header>
+                    </ion-card>
+
+                    <ion-reorder slot="end"></ion-reorder>
+                  </ion-item>
+
+             
+                </ion-item-sliding>
+     
+            </ion-list>
+         
+
+  </div>
+  -->
+</ion-content>

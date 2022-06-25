@@ -1,0 +1,96 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button style="display: block;" (click)="goToAnterior()"></ion-back-button>
+
+
+    </ion-buttons>
+    <ion-title mode="ios" class="ion-text-center">Clases de hoy</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content *ngIf="!cargando">
+
+
+    <div *ngIf="clasesSinPuntuar.length > 0 && !cargando">
+      <ion-slides [pager]="clasesSinPuntuar.length > 1">
+      <ion-slide *ngFor="let clase of clasesSinPuntuar">
+        <ion-card class="tarjetaClasePuntua">
+          <ion-card-header>
+    
+            <ion-card-title>¿Qué tal fué esta clase?</ion-card-title>
+            <ion-card-subtitle>Puntúa la clase pasada</ion-card-subtitle>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-card>
+              <ion-card-content>
+                <p><b>Fecha:</b> {{clase.fecha}} </p>
+                <p *ngIf="clase.grupoId != '0'" class="nombreGrupo"><b>Grupo: </b>{{clase.nombre}}</p>
+                <p *ngIf="clase.alumnoId != '0'" class="nombreGrupo"><b>Alumno: </b>{{clase.nombre}}</p>
+                <p class="horario"><b>Horario: </b>{{clase.horaInicio}} - {{clase.horaFin}}</p>
+                <p class="nombrePlanificacion"><b>Planificación:</b> {{clase.nombreSemana}} </p>
+                <div class="puntuaciones">
+                  <ionic5-star-rating #rating
+                  activeIcon = "star"
+                  defaultIcon = "star-outline"
+                  activeColor = "#bac040"
+                  defaultColor = "#aaaaaa"
+                  readonly = "false"
+                  [rating] = 0
+                  fontSize = "32px"
+                  (ratingChanged)="puntuaClase($event, clase)">
+              </ionic5-star-rating>
+          
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-card-content>
+        </ion-card>
+      </ion-slide>
+      </ion-slides>
+    </div>
+
+
+    <ion-list lines="none" *ngIf="!cargando">
+
+      <ion-item-sliding button *ngFor="let clase of clases">
+        <ion-item>
+          <ion-card class="tarjetaClase"
+          [ngClass]="{'animate__animated ': clase.animaTarjeta , 'animate__jello': clase.animaTarjeta }"
+          [ngStyle]="{'background-color':clase.colorTarjeta}" 
+          (press)="onPress($event, clase)"
+          (pressup)="onPressUp($event,clase)"
+          (click)="clickTarjeta(clase)">
+            <ion-card-content>
+              <p *ngIf="clase.grupoId != '0'" class="nombreGrupo"><b>Grupo: </b>{{clase.nombre}}</p>
+              <p *ngIf="clase.alumnoId != '0'" class="nombreGrupo"><b>Alumno: </b>{{clase.nombre}}</p>
+              <p class="horario"><b>Horario: </b>{{clase.horaInicio}} - {{clase.horaFin}}</p>
+              <p class="nombrePlanificacion"><b>Planificación:</b> {{clase.nombreSemana}} </p>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      
+      </ion-item-sliding>
+    </ion-list>
+
+    <ion-card class="tarjetaSinClase" *ngIf="clases.length === 0 && !cargando">
+      <ion-icon class="iconoSinClase" name="sparkles-outline"></ion-icon>
+    
+      <ion-card-content  class="ion-text-center">
+       Hoy no tienes clases programadas
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+
+
+<ion-content *ngIf="cargando">
+  <div class="ion-text-center">
+    <ion-spinner name="bubbles" color="primary"></ion-spinner>
+  </div>
+</ion-content>
+<ion-button *ngIf="seleccionaEliminar" class="animate__animated animate__fadeIn"
+color="danger" (click)="eliminarClase()" expand="block" shape="round">
+<ion-icon name="trash-outline"></ion-icon>Eliminar clases
+</ion-button>

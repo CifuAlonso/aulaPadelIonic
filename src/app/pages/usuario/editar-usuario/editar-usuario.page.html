@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()" color="primary">
+        Cerrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Editar datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="!cargando">
+
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input name="nombre"  [(ngModel)]="nombre" required></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Apellidos</ion-label>
+    <ion-input name="apellidos"  [(ngModel)]="apellidos"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-label position="floating">Teléfono</ion-label>
+    <ion-input name="telefono" [(ngModel)]="telefono"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Nacimiento</ion-label>
+    <ion-datetime displayFormat="DD-MM-YYYY" [(ngModel)]="nacimiento"  doneText="Ok" cancelText="Cancelar" required></ion-datetime>
+    </ion-item>
+
+  <p class="modificaPass" (click)="cambiaPass($event)">
+    Modificar contraseña
+  </p>
+
+    <ion-button class="botonCrear" (click)="actualizarUsuario()" expand="block" shape="round">
+      Actualizar datos
+    </ion-button>
+
+</ion-content>

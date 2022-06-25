@@ -1,0 +1,195 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    background-color: #333;
+  }
+  .botones{
+    margin-top: 5%;
+  }
+  #application {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    text-align: center;
+    min-height: 100vh;
+  }
+  
+  #canvasEl {
+    border-radius: 15px;
+      }
+  
+  
+  #speed-slider {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 10px;
+  }
+  
+  #speed-slider p {
+    margin: 0;
+  }
+  
+  #slider {
+    margin-top: 10px;
+    appearance: none;
+    width: 300px;
+    border-radius: 5px;
+    height: 25px;
+    background: #f9fbc8;
+
+    outline: none;
+  }
+  
+  #slider::-webkit-slider-thumb {
+    appearance: none;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #41a73e;
+    cursor: pointer;
+  }
+  
+  #slider::-moz-range-thumb {
+    width: 25px;
+    border: none;
+    height: 25px;
+    border-radius: 50%;
+    background: #ff0000;
+    cursor: pointer;
+  }
+  
+  
+  p {
+    font-family: Lato;
+    color: rgb(210, 255, 127);
+  }
+  
+  canvas {
+    border-radius: 5px;
+    background-image: var(--urlBackground);
+    background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center center;
+  }
+  
+  canvas:hover {
+    border: 2px solid rgba(0,0,0,0.54);
+  
+  }
+
+  .filaMostrador{
+    margin-bottom: 5%;
+  }
+
+  button.mat-raised-button{
+    background-color:#a0a537;
+    color: beige;
+    
+}
+
+button.mat-raised-button.eliminar{
+  background-color:#c61717;
+  color: beige;
+  
+}
+
+
+
+mat-card-header{
+  color: #a0a537;
+}
+
+.accordion-container,
+.accordion-container .arrow,
+.accordion-container .arrow:before,
+.accordion-container .arrow:after,
+.accordion-container .content {
+  transition: all .3s ease-in-out;
+}
+.accordion-container .arrow {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+}
+.accordion-container .arrow,
+.accordion-container .arrow:before,
+.accordion-container .arrow:after {
+  border-radius: 25px;
+}
+.accordion-container .arrow:before {
+  content: " ";
+  width: 15px;
+  height: 4px;
+  left: 50%;
+  margin-left: -8px;
+  background-color: #a0a537;
+  position: absolute;
+  transform: rotate(45deg);
+}
+.accordion-container .arrow:after {
+  content: " ";
+  width: 15px;
+  height: 4px;
+  background-color: #a0a537;
+  position: absolute;
+  right: -15px;
+  transform: rotate(-45deg);
+}
+.accordion-container.open .arrow:before {
+  transform: rotate(-45deg);
+}
+.accordion-container.open .arrow:after {
+  transform: rotate(45deg);
+}
+.accordion-container h1 {
+    font-size: 1rem;
+    position: relative;
+    width: 100%;
+    display: block;
+    margin: 0px;
+    padding-right: 28px;
+}
+.accordion-container p {
+  font-size: 0.9rem;
+  color: white;
+}
+.accordion-container {
+  display: block;
+  cursor: pointer;
+  position: relative;
+  background: white;
+  padding: 10px;
+  margin: 10px;
+}
+.accordion-container.open {
+  cursor: default;
+}
+.accordion-container:hover {
+  background: #ebebeb;
+}
+.accordion-container.open:hover {
+  background: #ffffff;
+}
+.accordion-container .content {
+  opacity: 0;
+  display: none;
+}
+.accordion-container.open .content {
+    display: block;
+    opacity: 1;
+}
+
+h1{
+  color: #a0a537;
+}
+
+ion-card{
+  width: 100%;
+}
